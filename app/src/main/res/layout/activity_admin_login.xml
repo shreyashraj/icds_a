@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/text_enterusername"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/label_enter_username" />
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:id="@+id/layout_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_enterusername"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:text="CDPO_ARARIA"
+                android:id="@+id/edit_username"
+                style="@style/BankDetailsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="25"
+                android:textCursorDrawable="@null" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:id="@+id/divider_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/layout_username"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:background="@color/divider_light_grey" />
+
+
+        <TextView
+            android:layout_marginTop="@dimen/margin_medium"
+            android:id="@+id/text_password"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_horizontal"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:text="@string/label_enter_password" />
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:id="@+id/layout_inputpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_password"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:text="test1234"
+                android:id="@+id/edit_password"
+                style="@style/BankDetailsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textCursorDrawable="@null" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider_horizontal2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/layout_inputpassword"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:layout_marginRight="@dimen/margin_large"
+            android:background="@color/divider_light_grey" />
+
+        <RadioGroup
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:orientation="vertical"
+            android:id="@+id/radioGroup_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider_horizontal2"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:id="@+id/rdb_dpo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_login_option_dpo" />
+
+            <RadioButton
+                android:id="@+id/rdb_cdpols"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_login_option_cdpols" />
+
+            <RadioButton
+                android:id="@+id/rdb_bm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_login_option_bm" />
+
+            <RadioButton
+                android:id="@+id/rdb_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_login_option_other" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:id="@+id/layout_inputother"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioGroup_login"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/edit_other"
+                style="@style/BankDetailsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textCursorDrawable="@null" />
+
+        </LinearLayout>
+
+        <View
+            android:visibility="invisible"
+            android:id="@+id/divider_horizontal3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/layout_inputother"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:layout_marginRight="@dimen/margin_large"
+            android:background="@color/divider_light_grey" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_medium"
+        app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior">
+
+
+        <Button
+            android:textSize="@dimen/text_size_big"
+            android:id="@+id/button_login"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/label_login" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_18"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:textColor="@color/broadcast_bg" />
+
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edit_answer"
+        fontPath="fonts/rawline-regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginLeft="@dimen/margin_large"
+        app:met_accentTypeface="fonts/rawline-regular.ttf"
+        android:hint="@string/label_hint_answer"
+        android:inputType="textNoSuggestions|textCapWords"
+        android:theme="@style/EditTextColorCustom"
+        app:met_floatingLabel="normal"
+        app:met_primaryColor="@color/black_100"
+        app:met_textColor="@color/black_87" />
+
+</LinearLayout>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/event_title"
+            style="@style/BodyTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="Barbecue on us, beer on you. Food music and make new friends."
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/event_date"
+            style="@style/BodyTextMediumGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_20"
+            android:layout_below="@+id/event_title"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_11"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="@dimen/text_size_xxsmall"
+            android:text="Friday, 02 Jul, 2017"
+            android:textColor="@color/text_slate_grey"
+            android:textSize="@dimen/text_size_xsmall" />
+
+        <TextView
+            android:id="@+id/event_time"
+            style="@style/BodyTextMediumGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_20"
+            android:layout_below="@+id/event_date"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="@dimen/text_size_xxsmall"
+            android:text="10:20 PM  -  12:30 PM"
+            android:textColor="@color/text_slate_grey"
+            android:textSize="@dimen/text_size_xsmall" />
+
+        <TextView
+            android:id="@+id/event_venue"
+            style="@style/BodyTextMediumBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_time"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_5"
+            android:lineSpacingExtra="@dimen/text_size_xxsmall"
+            android:text="Common area, Nestor, Koramangala"
+            android:textColor="@color/broadcast_bg"
+            android:textSize="@dimen/text_size_xsmall" />
+
+
+        <RelativeLayout
+            android:id="@+id/layout_rsvp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_venue"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_50">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_45"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_going"
+                    style="@style/BodyTextSemiBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Are you going?"
+                    android:textColor="@color/broadcast_bg"
+                    android:textSize="@dimen/text_size_medium" />
+
+                <TextView
+                    android:id="@+id/tv_rsvpby"
+                    style="@style/BodyTextMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="@dimen/text_size_xxsmall"
+                    android:text="RSVP by 15 Jun"
+                    android:textColor="@color/text_slate_grey"
+                    android:textSize="@dimen/text_size_11" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_change_rsvp"
+                style="@style/BodyTextBold"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_45"
+                android:layout_toLeftOf="@+id/btn_going"
+                android:gravity="center"
+                android:text="CHANGE"
+                android:textColor="@color/blush"
+                android:textSize="@dimen/text_size_xsmall" />
+
+            <TextView
+                android:id="@+id/tv_rsvp_full"
+                style="@style/BodyTextBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@drawable/button_pink_outline_bg"
+                android:gravity="center"
+                android:paddingBottom="@dimen/margin_xsmall"
+                android:paddingLeft="@dimen/margin_small"
+                android:paddingRight="@dimen/margin_small"
+                android:paddingTop="@dimen/margin_xsmall"
+                android:text="FULL"
+                android:textColor="@color/blush"
+                android:textSize="@dimen/text_size_xsmall" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/btn_not_going"
+                android:layout_width="@dimen/margin_45"
+                android:layout_height="@dimen/margin_45"
+                android:layout_gravity="center"
+                android:layout_toLeftOf="@+id/btn_going"
+                android:src="@mipmap/ic_cross" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/btn_going"
+                android:layout_width="@dimen/margin_45"
+                android:layout_height="@dimen/margin_45"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_13"
+                android:src="@mipmap/ic_tick" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_people_going"
+            style="@style/BodyTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_rsvp"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/padding_xlarge"
+            android:lineSpacingExtra="@dimen/text_size_xxsmall"
+            android:text="10 people are going"
+            android:textColor="@color/broadcast_bg"
+            android:textSize="@dimen/text_size_xsmall" />
+
+        <LinearLayout
+            android:id="@+id/layout_recycler_attendees"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_people_going">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_attendees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_event_description"
+            style="@style/BodyTextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_recycler_attendees"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:lineSpacingExtra="@dimen/text_size_xxsmall"
+            android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident,"
+            android:textColor="@color/grey_89"
+            android:textSize="@dimen/text_size_xsmall" />
+
+
+        <RelativeLayout
+            android:id="@+id/layout_host_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_event_description"
+            android:layout_margin="@dimen/margin_large"
+            android:gravity="center_vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_host"
+                android:layout_width="@dimen/margin_32"
+                android:layout_height="@dimen/margin_32"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/padding_10"
+                android:src="@mipmap/profile4" />
+
+            <TextView
+                android:id="@+id/tv_host_name"
+                style="@style/BodyTextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_size_medium"
+                android:layout_toRightOf="@+id/image_host"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="@dimen/text_size_xxsmall"
+                android:text="Viral Chajjer"
+                android:textSize="@dimen/text_size_xsmall" />
+
+            <TextView
+                android:id="@+id/tv_host_designation"
+                style="@style/BodyTextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_medium"
+                android:layout_below="@+id/tv_host_name"
+                android:layout_toRightOf="@+id/image_host"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="@dimen/text_size_xxsmall"
+                android:text="Building Manager"
+                android:textColor="@color/grey_89"
+                android:textSize="@dimen/text_size_11" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_map"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_260"
+            android:layout_below="@+id/layout_host_details">
+
+            <fragment
+                android:id="@+id/map"
+                class="com.stayabode.features.events.fragment.WorkaroundMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_100"
+                android:layout_alignParentTop="true"
+                android:background="@mipmap/map_gradient" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

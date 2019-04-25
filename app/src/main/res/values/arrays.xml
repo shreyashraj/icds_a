@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="labels">
+        <item>TV &amp; Accessories</item>
+        <item>AC &amp; Accessories</item>
+        <item>Water Purifier</item>
+        <item>Refrigerator</item>
+        <item>Microwave</item>
+        <item>Washing Machine</item>
+        <item>Induction &amp; Gas Stove</item>
+        <item>Other</item>
+        <item>DTH</item>
+        <item>Geysers &amp; Heaters</item>
+    </string-array>
+
+</resources>

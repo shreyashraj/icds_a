@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_small">
+
+    <TextView
+        android:id="@+id/text_visitor_name"
+        style="@style/BodyTextRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:textSize="@dimen/text_size_large" />
+
+    <TextView
+        android:id="@+id/text_visit_dates"
+        style="@style/BodyTextMediumGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_visitor_name"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_small" />
+
+
+    <TextView
+        android:id="@+id/text_edit"
+        style="@style/BodyTextBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/text_visit_dates"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_small"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:paddingBottom="@dimen/padding_10"
+        android:paddingLeft="@dimen/padding_32"
+        android:paddingRight="@dimen/padding_32"
+        android:paddingTop="@dimen/padding_10"
+        android:text="edit"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:id="@+id/text_delete"
+        style="@style/BodyTextBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_visit_dates"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_toLeftOf="@+id/text_edit"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:paddingBottom="@dimen/padding_10"
+        android:paddingLeft="@dimen/padding_32"
+        android:paddingRight="@dimen/padding_32"
+        android:paddingTop="@dimen/padding_10"
+        android:text="delete"
+        android:textAllCaps="true" />
+
+
+</RelativeLayout>

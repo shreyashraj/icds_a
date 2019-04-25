@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/layout_payment_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="@dimen/padding_10"
+            android:src="@mipmap/ic_circle_small_solid_grey" />
+
+        <TextView
+            android:id="@+id/tv_payment_amount_title"
+            style="@style/BodyTextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:text="Payment"
+            android:textColor="@color/text_slate_grey"
+            android:textSize="@dimen/text_size_xsmall" />
+
+        <TextView
+            android:id="@+id/tv_payment_amount_value"
+            style="@style/BodyTextBoldMediumGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Rs 15000"
+            android:textSize="@dimen/text_size_xsmall" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/divider"
+        android:layout_marginTop="@dimen/padding_10"
+        android:layout_below="@+id/layout_payment_amount"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layerType="software"
+        android:src="@drawable/view_dotted_line" />
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_payment_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider"
+        android:layout_marginBottom="@dimen/padding_10" />
+
+</RelativeLayout>

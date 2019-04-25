@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_new_issue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/padding_14"
+                    android:layout_marginBottom="@dimen/padding_14"
+                    android:id="@+id/layout_chipcloud"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/image_chip_indicator"
+                        android:layout_marginBottom="@dimen/margin_5"
+                        android:layout_gravity="center_vertical"
+                        android:src="@mipmap/ic_right_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <com.stayabode.custom.views.ChipView.ChipCloud
+                        xmlns:chipcloud="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/chip_cloud_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/margin_large"
+                        android:layout_marginRight="@dimen/margin_large"
+                        chipcloud:textSize="12sp" />
+
+                </LinearLayout>
+
+
+
+                <View
+                    android:id="@+id/divider_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/layout_chipcloud"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:background="@color/divider_light_grey"
+                    app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/divider_horizontal"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_toLeftOf="@+id/image_camera_selected_issue">
+
+                    <TextView
+                        android:id="@+id/tv_selected_category_subcat"
+                        style="@style/BodyText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="@dimen/margin_large"
+                        android:background="@drawable/chip_selected"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:padding="@dimen/margin_small"
+                        android:textColor="@color/mdtp_white"
+                        android:textSize="@dimen/text_size_xsmall" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/image_camera_selected_issue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/divider_horizontal"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:src="@mipmap/ic_camera"
+                    android:textColor="@color/black_100" />
+
+                <EditText
+                    android:id="@+id/edit_issue_description"
+                    style="@style/BodyText"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/image_camera_selected_issue"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@android:color/transparent"
+                    android:gravity="top"
+                    android:hint="@string/label_describe_issue"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapSentences"
+                    android:overScrollMode="always"
+                    android:paddingRight="@dimen/margin_xlarge"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:textCursorDrawable="@null"
+                    app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior" />
+
+                <ImageView
+                    android:id="@+id/image_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/image_camera_selected_issue"
+                    android:layout_marginRight="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:src="@mipmap/ic_camera"
+                    android:textColor="@color/black_100"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_issue_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large" />
+
+            <Button
+                android:id="@+id/button_report"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:text="@string/label_report" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

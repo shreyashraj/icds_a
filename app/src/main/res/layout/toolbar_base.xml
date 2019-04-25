@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/white"
+    app:theme="@style/ToolBarBase">
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        style="@style/ToolbarText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_medium" />
+
+    <RelativeLayout
+        android:id="@+id/layout_image_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:paddingRight="@dimen/margin_large">
+
+        <RelativeLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/toolbar_image_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/margin_xsmall"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:visibility="invisible"
+                android:layout_margin="@dimen/margin_5"
+                android:id="@+id/img_status"
+                android:layout_width="@dimen/margin_6"
+                android:layout_height="@dimen/margin_6"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/profile_small_width"
+                android:src="@mipmap/ic_circle_solid_pink" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/toolbar_btn"
+            style="@style/BodyTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center" />
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

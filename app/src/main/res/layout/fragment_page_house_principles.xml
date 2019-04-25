@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        style="@style/Icomoon"
+        android:textSize="70dp"
+        android:id="@+id/text_number"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_xxxlarge" />
+
+    <TextView
+        style="@style/Icomoon"
+        android:textColor="@color/white"
+        android:layout_below="@+id/text_number"
+        android:id="@+id/text_start_quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:gravity="bottom|center_horizontal" />
+
+    <TextView
+        android:id="@+id/contentTextView"
+        style="@style/BodyTextRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_start_quote"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_xxlarge"
+        android:layout_marginRight="@dimen/margin_xxlarge"
+        android:gravity="center"
+        android:text="Before you enter this holy territory of Abode, make sure your pockets don’t possess any drugs."
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_big" />
+
+
+    <TextView
+        style="@style/Icomoon"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/margin_small"
+        android:id="@+id/text_end_quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contentTextView"
+        android:layout_gravity="center"
+        android:gravity="center" />
+
+</RelativeLayout>

@@ -1,0 +1,125 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.26.1'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven {
+        url 'https://maven.fabric.io/public'
+    }
+}
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "com.stayabode"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 103
+        versionName "1.0.2"
+    }
+
+    compileOptions {
+        sourceCompatibility 1.7
+        targetCompatibility 1.7
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+        jumboMode = true
+    }
+
+
+    buildTypes {
+        debug {
+            shrinkResources false
+            debuggable true
+            ext.fabricApiKey = "2e05b5d910b63fbd2539777335bc8ea5e621b0ab.."
+            ext.fabricApiSecret = "e38f9b929d8e31e263e9a1be304b33c80e52432ba29d4bc28ea25b69188fb9e2.."
+        }
+        prod {
+            shrinkResources true
+            minifyEnabled true
+            debuggable true
+            ext.fabricApiKey = "aa29f51494eefaf2f50b4b083da4b473aa1c7b52.."
+            ext.fabricApiSecret = "1b3a352395a4daf1977757ba1f687efec1440e694268ccb419a51b2b26dc0271.."
+        }
+
+        release {
+            shrinkResources true
+            minifyEnabled true
+            debuggable false
+            ext.fabricApiKey = "aa29f51494eefaf2f50b4b083da4b473aa1c7b52"
+            ext.fabricApiSecret = "1b3a352395a4daf1977757ba1f687efec1440e694268ccb419a51b2b26dc0271"
+       }
+    }
+
+    File crashlyticsProperties = new File("${project.projectDir.absolutePath}/fabric.properties")
+    applicationVariants.all { variant ->
+        variant.productFlavors.each { flavor ->
+            def variantSuffix = variant.name.capitalize()
+            def generatePropertiesTask = task("fabricGenerateProperties${variantSuffix}") << {
+                Properties properties = new Properties()
+                properties.put("apiKey", flavor.fabricApiKey)
+                properties.put("apiSecret", flavor.fabricApiSecret)
+                properties.store(new FileWriter(crashlyticsProperties), "")
+            }
+
+            def generateResourcesTask = project.tasks.getByName("fabricGenerateResources${variantSuffix}")
+            generateResourcesTask.dependsOn generatePropertiesTask
+            generateResourcesTask.doLast {
+                println "Removing fabric.properties"
+                crashlyticsProperties.delete()
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    implementation 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+    implementation 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    implementation 'com.squareup.okhttp:okhttp:2.6.0'
+    implementation 'com.squareup.okhttp:logging-interceptor:2.6.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'uk.co.chrisjenx:calligraphy:2.2.0'
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.wdullaer:materialdatetimepicker:3.0.0'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.romandanylyk:pageindicatorview:0.0.6'
+    implementation 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
+    implementation 'com.zcw:togglebutton-library:1.0.0'
+    implementation 'com.airbnb.android:lottie:2.7.0'
+    implementation "com.mixpanel.android:mixpanel-android:4.9.7"
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.6.31'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
+    implementation 'com.facebook.android:facebook-android-sdk:4.38.1'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+        transitive = true;
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'

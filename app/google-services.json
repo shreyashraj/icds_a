@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "735070498924",
+    "firebase_url": "https://abode-1755f.firebaseio.com",
+    "project_id": "abode-1755f",
+    "storage_bucket": "abode-1755f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735070498924:android:28752dbc952e1a8a",
+        "android_client_info": {
+          "package_name": "com.stayabode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735070498924-cvcsi89mtm0s61t3t5v716g7uu4uss3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtobx8OVCu85qxa7OLWF6LTUULIXpw2yo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

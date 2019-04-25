@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingRight="@dimen/margin_32"
+    android:id="@+id/layout_recycler_item"
+    android:paddingBottom="@dimen/padding_xlarge">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/margin_6"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="@dimen/margin_104"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/MontRegularDarkGrey20"
+            android:gravity="center_horizontal"
+            android:id="@+id/tv_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="02" />
+
+        <TextView
+            style="@style/ToolbarText"
+            android:gravity="center_horizontal"
+            android:id="@+id/tv_month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_10"
+            android:textAllCaps="true"
+            android:text="MAR" />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_marginTop="@dimen/margin_small"
+        style="@style/BodyTextSemiBold"
+        android:layout_marginLeft="@dimen/margin_104"
+        android:id="@+id/tv_event_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_medium"
+        android:text="Barbecue on us, beer on you. Food music and make new friends." />
+
+    <TextView
+        style="@style/BodyTextMediumGrey"
+        android:layout_marginTop="@dimen/margin_12"
+        android:id="@+id/tv_event_time"
+        android:layout_marginLeft="@dimen/margin_104"
+        android:layout_below="@+id/tv_event_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_xsmall"
+        android:textColor="@color/button_bg"
+        android:lineSpacingExtra="@dimen/text_size_xxsmall"
+        android:text="10:20 PM  -  12:30 PM" />
+
+    <TextView
+        style="@style/BodyTextMediumBlack"
+        android:layout_marginTop="@dimen/margin_5"
+        android:id="@+id/tv_venue"
+        android:layout_marginLeft="@dimen/margin_104"
+        android:layout_below="@+id/tv_event_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_xsmall"
+        android:lineSpacingExtra="@dimen/text_size_xxsmall"
+        android:text="Common area, Nestor, Koramangala" />
+
+    <RelativeLayout
+        android:id="@+id/layout_rsvp"
+        android:layout_marginLeft="@dimen/margin_104"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_below="@+id/tv_venue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image1"
+            android:src="@mipmap/profile_round"
+            android:layout_width="@dimen/margin_32"
+            android:layout_height="@dimen/margin_32"
+            app:civ_border_width="@dimen/margin_1"
+            app:civ_border_color="@color/white"
+            android:layout_gravity="center" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:src="@mipmap/profile2"
+            android:id="@+id/image2"
+            android:layout_marginLeft="@dimen/margin_negative10"
+            android:layout_toRightOf="@+id/image1"
+            android:layout_width="@dimen/margin_32"
+            android:layout_height="@dimen/margin_32"
+            app:civ_border_width="@dimen/margin_1"            app:civ_border_color="@color/white"
+            android:layout_gravity="center" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image3"
+            android:layout_marginLeft="@dimen/margin_negative10"
+            android:layout_toRightOf="@+id/image2"
+            android:src="@mipmap/profile3"
+            android:layout_width="@dimen/margin_32"
+            android:layout_height="@dimen/margin_32"
+            app:civ_border_width="@dimen/margin_1"
+            app:civ_border_color="@color/white"
+            android:layout_gravity="center" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image4"
+            android:src="@mipmap/profile4"
+            android:layout_marginLeft="@dimen/margin_negative10"
+            android:layout_toRightOf="@+id/image3"
+            android:layout_width="@dimen/margin_32"
+            android:layout_height="@dimen/margin_32"
+            app:civ_border_width="@dimen/margin_1"
+            app:civ_border_color="@color/white"
+            android:layout_gravity="center" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image5"
+            android:layout_marginLeft="@dimen/margin_negative10"
+            android:layout_toRightOf="@+id/image4"
+            android:src="@mipmap/profile5"
+            android:layout_width="@dimen/margin_32"
+            android:layout_height="@dimen/margin_32"
+            app:civ_border_width="@dimen/margin_1"
+            app:civ_border_color="@color/white"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_total_attending"
+            style="@style/BodyTextSemiBold"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_toRightOf="@+id/image5"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_11"
+            android:gravity="center_horizontal"
+            android:text="78" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btn_rsvp"
+           android:layout_alignParentRight="true"
+            android:src="@mipmap/ic_tick"
+            android:layout_width="@dimen/margin_32"
+            android:layout_height="@dimen/margin_32"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_rsvp_full"
+            android:background="@drawable/button_pink_outline_bg"
+            android:paddingBottom="@dimen/margin_xsmall"
+            android:paddingLeft="@dimen/margin_small"
+            android:paddingRight="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_xsmall"
+            style="@style/BodyTextBold"
+            android:textColor="@color/blush"
+            android:textSize="@dimen/text_size_xsmall"
+            android:text="FULL"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

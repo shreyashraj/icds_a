@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/margin_large"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:layout_marginTop="@dimen/margin_large">
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:id="@+id/layout_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+       android:id="@+id/image_read_unread"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/margin_xlarge"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:background="@color/black_87"
+        android:layout_width="10dp"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:text="ABCDE1"
+        android:id="@+id/text_title"
+        style="@style/BodyTextSemiBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_medium" />
+
+</LinearLayout>
+
+    <TextView
+        android:text="ABCDE2"
+        android:id="@+id/text_body"
+        style="@style/BodyTextMediumGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_title"
+        android:layout_marginBottom="@dimen/margin_xsmall"
+        android:layout_marginLeft="86dp"
+        android:layout_marginTop="@dimen/margin_xsmall" />
+
+    <TextView
+        android:text="ABCDE3"
+        android:id="@+id/text_date_time"
+        style="@style/BodyTextMediumGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_body"
+        android:layout_marginBottom="@dimen/margin_xsmall"
+        android:layout_marginLeft="86dp"
+        android:textSize="@dimen/text_size_xsmall"
+        android:layout_marginTop="@dimen/margin_xsmall" />
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+
+        android:id="@+id/layout_year_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingTop="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_medium"
+            android:layout_centerVertical="true"
+            android:text="Agvdh"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:id="@+id/text_due_title"
+            style="@style/BodyTextBoldMediumGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:textSize="@dimen/default_textsize" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:paddingTop="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_medium"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/text_due_title"
+            android:id="@+id/image_info"
+            android:paddingRight="@dimen/margin_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_info" />
+
+        <TextView
+            android:paddingTop="@dimen/margin_medium"
+            android:paddingBottom="@dimen/margin_medium"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_alignParentRight="true"
+            android:id="@+id/text_due_value"
+            style="@style/BodyTextBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end|center_vertical"
+            android:textSize="@dimen/default_textsize" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_sub_dues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_year_month"
+        android:nestedScrollingEnabled="false" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/recycler_sub_dues"
+        android:background="@color/edit_light_grey" />
+</RelativeLayout>

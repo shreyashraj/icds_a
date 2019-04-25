@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/button_pink_outline_bg"
+    android:layout_margin="@dimen/margin_medium"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_small">
+
+    <ImageView
+        android:layout_marginRight="@dimen/margin_xlarge"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_20"
+        android:src="@mipmap/ic_circle_solid_pink"
+        android:id="@+id/img_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_toRightOf="@+id/img_status"
+        android:id="@+id/text_description"
+        style="@style/BodyTextRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:textSize="@dimen/text_size_15" />
+
+
+    <TextView
+        android:layout_below="@id/text_description"
+        android:layout_toRightOf="@+id/img_status"
+        android:id="@+id/text_selection"
+        style="@style/BodyTextBold"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_size_xsmall" />
+
+
+</RelativeLayout>

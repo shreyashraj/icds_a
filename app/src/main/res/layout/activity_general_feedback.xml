@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_floating_button"
+        android:orientation="vertical">
+
+            <TextView
+                android:text="@string/label_general_feedback"
+                android:id="@+id/text_issue"
+                style="@style/HeaderTextItalicBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+                android:textSize="@dimen/text_size_medium" />
+
+        <View
+            android:id="@+id/divider_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:background="@color/divider_light_grey" />
+
+        <EditText
+            android:id="@+id/edit_your_idea"
+            style="@style/BodyText"
+            android:inputType="textCapSentences"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:imeOptions="actionDone"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="top"
+            android:hint="@string/label_your_ideas"
+            android:textCursorDrawable="@null"
+            android:theme="@style/EditTextColorCustom" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:padding="@dimen/margin_medium"
+        app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior">
+
+        <Button
+            android:id="@+id/btn_send_feedback"
+            style="@style/ButtonStyle"
+            android:background="@drawable/button_grey_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_send_general_feedback" />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

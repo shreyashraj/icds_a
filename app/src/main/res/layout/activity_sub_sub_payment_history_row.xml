@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding_10"
+        android:paddingTop="@dimen/padding_10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="@dimen/padding_10"
+            android:src="@mipmap/ic_circle_outline_grey" />
+
+        <TextView
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingRight="@dimen/margin_medium"
+            android:id="@+id/tv_payment_amount_title"
+            style="@style/BodyTextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Month"
+            android:textColor="@color/text_slate_grey"
+            android:textSize="@dimen/text_size_xsmall" />
+
+        <TextView
+            android:id="@+id/tv_payment_amount_value"
+            style="@style/BodyTextBoldMediumGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs 1300"
+            android:textColor="@color/broadcast_bg_30"
+            android:textSize="@dimen/text_size_xsmall" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/divider_dotted"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layerType="software"
+        android:src="@drawable/view_dotted_line" />
+
+    <View
+        android:id="@+id/divider_solid"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/edit_light_grey" />
+
+</LinearLayout>

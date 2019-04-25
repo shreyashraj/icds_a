@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_otpsent"
+            style="@style/BroadcastText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.2" />
+
+        <TextView
+            android:id="@+id/text_enterotp"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_otpsent"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xxlarge"
+            android:text="@string/label_enter_otp" />
+
+        <com.stayabode.custom.views.PinEntryCustomEditText
+            android:id="@+id/txt_pin_entry"
+            fontPath="fonts/rawline-regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_enterotp"
+            android:layout_marginLeft="@dimen/margin_xlarge"
+            android:layout_marginRight="@dimen/margin_xlarge"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:imeOptions="actionDone"
+            android:digits="1234567890"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="6"
+            android:paddingTop="@dimen/margin_xlarge"
+            android:textColor="@color/text_body_black"
+            android:textIsSelectable="false"
+            android:textSize="38sp"
+            android:visibility="visible"
+            app:pinLineColors="@color/pin_line_colors" />
+
+        <TextView
+            android:id="@+id/text_error"
+            style="@style/BodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_pin_entry"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:text="@string/label_incorrect_otp_error"
+            android:textColor="@color/coral_pink"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentBottom="true"
+        app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_resend_otp"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_xsmall"
+            android:layout_weight="1"
+            android:background="@drawable/button_grey_outline_bg"
+            android:text="@string/label_resendotp"
+            android:textColor="@color/text_body_black" />
+
+        <Button
+            android:id="@+id/button_done"
+            style="@style/ButtonStyle"
+            android:background="@drawable/button_grey_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_xsmall"
+            android:layout_weight="1"
+            android:text="@string/label_done" />
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

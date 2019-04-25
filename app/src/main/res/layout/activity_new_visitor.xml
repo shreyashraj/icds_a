@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_floating_button">
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edit_full_name"
+            fontPath="fonts/rawline-regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            app:met_accentTypeface="fonts/rawline-regular.ttf"
+            android:hint="@string/label_full_name"
+            android:inputType="textNoSuggestions|textCapWords"
+            android:theme="@style/EditTextColorCustom"
+            app:met_floatingLabel="normal"
+            app:met_primaryColor="@color/black_100"
+            app:met_textColor="@color/black_87" />
+
+
+        <RelativeLayout
+            android:id="@+id/layout_edit_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_xxlarge"
+            android:layout_below="@+id/edit_full_name"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xlarge">
+
+            <TextView
+                style="@style/BodyTextRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:text="@string/label_mobile_prefix"
+                android:textSize="@dimen/text_size_18" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edit_number"
+                fontPath="fonts/rawline-regular.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:met_accentTypeface="fonts/rawline-regular.ttf"
+                android:digits="0123456789"
+                android:hint="@string/label_mobile_number"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingLeft="@dimen/margin_40"
+                android:theme="@style/EditTextColorCustom"
+                app:met_floatingLabel="normal"
+                app:met_primaryColor="@color/black_100"
+                app:met_textColor="@color/black_87" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_check_in_out_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_edit_number"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_12"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_weight="1">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edit_check_in_date"
+                    fontPath="fonts/rawline-regular.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textNoSuggestions"
+                    android:cursorVisible="false"
+                    app:met_accentTypeface="fonts/rawline-regular.ttf"
+
+                    android:hint="@string/label_arriving_on"
+                    android:theme="@style/EditTextColorCustom"
+                    app:met_floatingLabel="normal"
+                    app:met_primaryColor="@color/black_100"
+                    app:met_textColor="@color/black_87" />
+
+                <include layout="@layout/view_down_arrow" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_12"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_weight="1">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edit_check_out_date"
+                    fontPath="fonts/rawline-regular.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    app:met_accentTypeface="fonts/rawline-regular.ttf"
+
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/label_leaving_on"
+                    android:inputType="textNoSuggestions"
+                    android:theme="@style/EditTextColorCustom"
+                    app:met_floatingLabel="normal"
+                    app:met_primaryColor="@color/black_100"
+                    app:met_textColor="@color/black_87" />
+
+                <include layout="@layout/view_down_arrow" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_check_in_out_"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xlarge">
+
+            <Spinner
+                android:id="@+id/spinner_gender"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_xxlarge"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/edit_gender_pretext"
+                style="@style/BodyTextRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:text="@string/label_gender"
+                android:textColor="@color/prefix_light_grey"
+                android:textSize="@dimen/text_size_xsmall" />
+
+            <TextView
+                android:id="@+id/text_gender"
+                style="@style/BodyTextRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_gender_pretext"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingBottom="7dp"
+                android:paddingTop="5dp"
+                android:textColor="@color/black_87"
+                android:textSize="@dimen/text_size_big" />
+
+            <include layout="@layout/view_down_arrow" />
+
+            <View
+                android:id="@+id/divider_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/text_gender"
+                android:background="@color/divider_light_grey" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_register_visitor"
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_grey_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:text="@string/label_confirm_register"
+        app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior" />
+
+</android.support.design.widget.CoordinatorLayout>

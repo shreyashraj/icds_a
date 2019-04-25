@@ -1,0 +1,11 @@
+<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/BodyTextSemiBold"
+    android:paddingTop="@dimen/padding_10"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:button="@null"
+    android:id="@+id/radio_month_year"
+    android:drawableLeft="@drawable/radio_button_multi_select"
+    android:drawablePadding="@dimen/padding_medium"
+    android:text="@string/label_electrical" />

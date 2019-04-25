@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="98dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/guest_layout"
+    android:layout_marginTop="@dimen/margin_small">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/guest_pic"
+        android:src="@mipmap/ic_profile_placeholder"
+        android:layout_width="50dp"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:text="Arpit"
+        android:id="@+id/guest_name"
+        style="@style/BodyTextSemiBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/guest_pic"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_small"
+        android:textSize="@dimen/text_size_13" />
+
+    <TextView
+        android:text="#102"
+        android:gravity="center"
+        android:id="@+id/guest_room_number"
+        style="@style/ButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/guest_name"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:textSize="@dimen/text_size_xsmall" />
+</RelativeLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/coordinatorLayout"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recycler_event_preferences"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@+id/button_new_issue"
+    android:layout_below="@+id/toolbar"
+    android:layout_marginBottom="@dimen/margin_floating_button" />
+
+<Button
+    android:layout_gravity="bottom|end"
+    android:orientation="vertical"
+    app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior"
+    android:id="@+id/button_rsvp"
+    style="@style/ButtonStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="@dimen/margin_medium"
+    android:layout_marginLeft="@dimen/margin_medium"
+    android:layout_marginRight="@dimen/margin_medium"
+    android:text="@string/label_confirm_guests" />
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/base_activity_content_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@color/white" />
+
+    <include
+        android:id="@+id/base_toolbar"
+        layout="@layout/toolbar_base" />
+
+    <include
+        android:id="@+id/error_view"
+        layout="@layout/view_error"
+        android:visibility="invisible" />
+
+    <include
+        android:id="@+id/loading_view"
+        layout="@layout/view_loading"
+        android:visibility="invisible" />
+
+</RelativeLayout>
+

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:background="@color/white"
+    android:clickable="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:textSize="@dimen/text_size_big"
+        android:id="@+id/text_heading_error"
+        style="@style/GreetingText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:gravity="center"
+        android:text="@string/label_no_internet" />
+
+    <View
+        android:id="@+id/divider_horizontal"
+        android:layout_width="@dimen/margin_20"
+        android:layout_height="1dp"
+        android:layout_below="@+id/text_heading_error"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:background="@color/button_bg" />
+
+    <TextView
+        android:textSize="@dimen/text_size_big"
+
+        android:id="@+id/text_description"
+        style="@style/BodyTextRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider_horizontal"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_xlarge"
+        android:gravity="center"
+        android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui."
+        android:textColor="@color/text_slate_grey" />
+
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/img_error"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:layout_below="@+id/text_description"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/margin_72"
+        android:src="@mipmap/ic_no_internet" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/margin_72"
+        app:lottie_rawRes="@raw/finish"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+
+    <Button
+        android:textSize="@dimen/text_size_big"
+        android:id="@+id/button_act_on_error"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_xxlarge"
+        android:background="@drawable/button_grey_outline_bg"
+        android:paddingLeft="@dimen/margin_large"
+        android:paddingRight="@dimen/margin_large"
+        android:text="@string/label_retry_internet"
+        android:textColor="@color/text_body_black" />
+
+    <RelativeLayout
+        android:id="@+id/layout_contact_manager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_xlarge"
+        android:background="@drawable/button_light_grey_outline"
+        android:padding="@dimen/margin_20"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/BodyTextSemiBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_18"
+            android:text="@string/label_community_manager_card_title"
+            android:textColor="@color/broadcast_sub_text" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_manager"
+            android:layout_width="@dimen/margin_32"
+            android:layout_height="@dimen/margin_32"
+            android:layout_below="@+id/tv_title"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/padding_10"
+            android:src="@mipmap/profile4" />
+
+        <TextView
+            android:id="@+id/tv_manager_name"
+            style="@style/BodyTextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/text_size_medium"
+            android:layout_below="@+id/tv_title"
+            android:layout_toRightOf="@+id/image_manager"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="@dimen/text_size_xxsmall"
+            android:text="Viral Chajjer"
+            android:textSize="@dimen/text_size_xsmall" />
+
+        <TextView
+            android:id="@+id/tv_manager_designation"
+            style="@style/BodyTextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_medium"
+            android:layout_below="@+id/tv_manager_name"
+            android:layout_toRightOf="@+id/image_manager"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="@dimen/text_size_xxsmall"
+            android:text="Community Manager"
+            android:textColor="@color/grey_89"
+            android:textSize="@dimen/text_size_11" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

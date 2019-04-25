@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_medium" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/text_profile_name"
+                style="@style/BroadcastText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_12" />
+
+
+            <TextView
+                android:id="@+id/text_welcome_msg"
+                style="@style/BodyTextRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_pic"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/text_slate_grey"
+                android:textSize="@dimen/text_size_medium" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_50"
+                android:background="@color/divider_light_grey" />
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_older_than_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_50"
+                    android:src="@mipmap/ic_login_after_checkout" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/BodyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:layout_marginRight="@dimen/margin_50"
+                    android:layout_toRightOf="@+id/img_older_than_history"
+                    android:text="Deposit refund status"
+                    android:textSize="@dimen/text_size_18" />
+
+                <TextView
+                    android:id="@+id/tv_sub_title"
+                    style="@style/BodyTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_marginLeft="@dimen/margin_medium"
+                    android:layout_marginRight="@dimen/margin_50"
+                    android:layout_marginTop="@dimen/padding_10"
+                    android:layout_toRightOf="@+id/img_older_than_history"
+                    android:text="You'll receive your deposit refund within 15 working days"
+                    android:textColor="@color/text_slate_grey"
+                    android:textSize="@dimen/text_size_11" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:background="@color/divider_light_grey" />
+
+            <EditText
+                android:id="@+id/edit_your_experience"
+                style="@style/BodyText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/broadcast_height"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="@string/label_your_experience"
+                android:imeOptions="actionDone"
+                android:inputType="textCapSentences"
+                android:textCursorDrawable="@null"
+                android:theme="@style/EditTextColorCustom" />
+
+            <Button
+                android:id="@+id/button_get_rental_recipts"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginRight="@dimen/margin_medium"
+                android:background="@drawable/button_grey_bg"
+                android:text="@string/label_send_general_feedback"
+                app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior" />
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

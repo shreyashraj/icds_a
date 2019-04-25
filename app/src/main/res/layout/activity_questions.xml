@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_group"
+            android:background="@drawable/button_pink_outline_bg"
+            android:paddingBottom="@dimen/margin_xsmall"
+            android:paddingLeft="@dimen/margin_small"
+            android:paddingRight="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_xsmall"
+            style="@style/BodyTextBold"
+            android:textColor="@color/blush"
+            android:textSize="@dimen/text_size_big"
+            android:layout_centerHorizontal="true"
+            android:text="FULL"
+            android:gravity="center"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/text_question"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_group"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:textSize="@dimen/text_size_big"
+            android:text="@string/label_enter_username" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/text_question"
+            android:layout_margin="@dimen/margin_large">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/btn_add"
+                android:layout_width="@dimen/margin_45"
+                android:layout_height="@dimen/margin_45"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_13"
+                android:src="@mipmap/ic_plus"
+                android:visibility="invisible" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup_answers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:id="@+id/checkboxes_answers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:id="@+id/edittexts_answers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_multiple_answers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/btn_add"
+                android:orientation="vertical"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_medium"
+        app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior">
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/button_answer_subquestions"
+            style="@style/ButtonStyle"
+            android:textSize="@dimen/text_size_big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_pink"
+            android:text="@string/label_answer_subqs" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:textSize="@dimen/text_size_big"
+                android:id="@+id/button_previous"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_weight="1"
+                android:text="@string/label_previous" />
+
+            <Button
+                android:textSize="@dimen/text_size_big"
+                android:id="@+id/button_next"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_weight="1"
+                android:text="@string/label_next" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_marginBottom="@dimen/margin_floating_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_checkout_title"
+                style="@style/BodyTextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:text="@string/label_contract_extension_title"
+                android:textColor="@color/broadcast_bg"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/tv_checkout_date"
+                style="@style/BodyTextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_checkout_title"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="30th December, 2017"
+                android:textColor="@color/broadcast_bg"
+                android:textSize="@dimen/text_size_big" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_1"
+                android:layout_below="@+id/tv_checkout_date"
+                android:layout_margin="@dimen/margin_large"
+                android:background="@color/divider_light_grey" />
+
+            <TextView
+                android:id="@+id/tv_how_long"
+
+                style="@style/BodyTextMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:lineSpacingExtra="@dimen/text_size_xxsmall"
+                android:text="@string/label_contract_extension_sub_title"
+                android:textColor="@color/broadcast_bg"
+                android:textSize="@dimen/text_size_small" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_how_long"
+                android:layout_margin="@dimen/margin_large">
+
+                <RadioButton
+                    android:id="@+id/radio_one_month"
+                    style="@style/BodyTextSemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@android:color/transparent"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/radio_button_single_select" />
+
+                <RadioButton
+                    android:id="@+id/radio_two_month"
+                    style="@style/BodyTextSemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@android:color/transparent"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/radio_button_single_select" />
+
+                <RadioButton
+                    android:id="@+id/radio_six_month"
+                    style="@style/BodyTextSemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@android:color/transparent"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/radio_button_single_select" />
+
+                <RadioButton
+                    android:id="@+id/radio_eleven_month"
+                    style="@style/BodyTextSemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@android:color/transparent"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/radio_button_single_select" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_how_long"
+                android:layout_marginLeft="64dp"
+                android:layout_marginTop="@dimen/margin_large"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_one_date"
+                        style="@style/BodyTextSemiBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        style="@style/BodyTextMediumGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:text="+1 Rental Month"
+                        android:textColor="@color/text_slate_grey50"
+                        android:textSize="@dimen/text_size_xsmall" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_two_date"
+                        style="@style/BodyTextSemiBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        style="@style/BodyTextMediumGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:text="+2 Rental Months"
+                        android:textColor="@color/text_slate_grey50"
+                        android:textSize="@dimen/text_size_xsmall" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_six_date"
+                        style="@style/BodyTextSemiBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        style="@style/BodyTextMediumGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:text="+6 Rental Months"
+                        android:textColor="@color/text_slate_grey50"
+                        android:textSize="@dimen/text_size_xsmall" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_eleven_date"
+                        style="@style/BodyTextSemiBold"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp" />
+
+                    <TextView
+                        style="@style/BodyTextMediumGrey"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:text="+11 Rental Months"
+                        android:textColor="@color/text_slate_grey50"
+                        android:textSize="@dimen/text_size_xsmall" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/layout_choose_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radiogroup_category"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:layout_weight="1">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edit_choose_date"
+                    fontPath="fonts/rawline-regular.ttf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:hint="Or choose a date"
+                    android:inputType="textNoSuggestions"
+                    android:theme="@style/EditTextColorCustom"
+                    app:met_accentTypeface="fonts/rawline-regular.ttf"
+                    app:met_floatingLabel="normal"
+                    app:met_primaryColor="@color/black_100"
+                    app:met_textColor="@color/black_87" />
+
+                <include layout="@layout/view_down_arrow" />
+            </RelativeLayout>
+
+            <View
+                android:layout_below="@+id/layout_choose_date"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/margin_medium"
+        android:paddingLeft="@dimen/margin_medium"
+        android:paddingRight="@dimen/margin_medium"
+        app:layout_behavior="com.stayabode.custom.behaviour.MoveUpwardBehavior">
+
+        <Button
+            android:id="@+id/button_submit"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:background="@drawable/button_grey_bg"
+            android:enabled="false"
+            android:text="@string/label_submit" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

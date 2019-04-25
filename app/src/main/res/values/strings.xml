@@ -1,0 +1,256 @@
+<resources>
+
+    <string-array name="array_house_rules">
+        <item>The only drug we don’t mind at Abode is love. Nothing else.</item>
+        <item>Cleanliness is next to common sense. And dustbins are not showpieces. Just saying.</item>
+        <item>When in community zones - You come. You see. You pick. And you return. (Kleptomaniacs, go away.)</item>
+        <item>Talking of co-living zones, leave them like you had found them. Clean and kickass!</item>
+        <item>A family that eats (talks, inspires and grows) together, stays together. Up for it?</item>
+        <item>FUR is our favourite ‘F’ word after, well, Friends. Your four-legged fur balls are welcome.</item>
+        <item>Never miss an event hosted by Abode Insiders. FOMO might kill you from within otherwise.</item>
+        <item>We’ll mend broken hearts, not broken furniture. So, take good care of your room.</item>
+        <item>If you plan to bad-mouth Deepika Padukone, please pack your bags before that.</item>
+        <item>Make sure you make friends, memories and some bad decisions at Abode. After all, YOLO, right?</item>
+    </string-array>
+
+    <string-array name="array_house_principles">
+        <item>The only drug we don\’t mind at Abode is love. Nothing else.</item>
+        <item>Cleanliness is next to common sense. And dustbins are not showpieces. Just saying.</item>
+        <item>When in community zones - You come. You see. You pick. And you return. (Kleptomaniacs, go away.)</item>
+    </string-array>
+
+    <string name="label_register_a_visitor">Register a visitor</string>
+    <string name="label_no_internet_desc">आपने प्रश्नावली को सफलतापूर्वक पूरा कर लिया है</string>
+    <string name="label_no_visitor_desc">Looks like your cat needs a new face to scratch</string>
+    <string name="label_no_issues_desc">How many residents does it take to change a bulb? None. We’ve got it.</string>
+    <string name="label_arriving_on">Arriving on</string>
+    <string name="label_leaving_on">Leaving on</string>
+    <string name="label_rentals">Rentals</string>
+
+    <!--================Animation constants==================-->
+    <string name="anim_profile_image">profile_image</string>
+    <string name="anim_profile_name">profile_name</string>
+    <string name="anim_profile_room">profile_room</string>
+
+    <string name="anim_broadcast">broadcast</string>
+    <string name="anim_broadcast_text">broadcastText</string>
+
+    <string name="anim_broadcast_message">profile_message</string>
+    <string name="anim_broadcast_sender">profile_sender</string>
+    <string name="anim_broadcast_role">profile_role</string>
+
+    <!--================All Icons==================-->
+    <string name="icon_left_quote">&#xe903;</string>
+    <string name="icon_right_quote">&#xe904;</string>
+    <string name="icon_i">&#xe901;</string>
+    <string name="icon_v">&#xe905;</string>
+    <string name="icon_x">&#xe906;</string>
+    <string name="icon_right">&#xe902;</string>
+    <string name="label_request_receipts">Request receipts</string>
+
+    <string name="app_name">ICDS</string>
+    <string name="facebook_app_id">346817269002864</string>
+
+    <string name="label_home">Home</string>
+    <string name="action_logout">Logout</string>
+    <string name="label_new_broadcast">New Broadcast</string>
+    <string name="label_dummy_broadcast">Trek to Nandi Hills. Bus leaves at 7:30 in the morning. Contact me.</string>
+    <string name="label_dummy_greeting">Morning Varun!</string>
+
+    <string name="label_register_visitor">Visitors</string>
+    <string name="label_confirm_register">Register</string>
+    <string name="label_schedule_cleaning">Schedule cleaning</string>
+    <string name="label_issue">Issues</string>
+    <string name="label_report_issue">Report an issue</string>
+    <string name="label_neighbours">Neighbours</string>
+    <string name="label_full_name">Full Name</string>
+    <string name="label_mobile_number">Mobile Number</string>
+    <string name="label_gender">Gender</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_feedback">Feedback</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="label_date">Date</string>
+    <string name="label_time">Time</string>
+    <string name="label_issue_type">Choose the type of issue</string>
+    <string name="label_describe_issue">Describe the issue</string>
+    <string name="label_other">Other</string>
+    <string name="label_furnishing">Furnishing</string>
+    <string name="label_plumbing">Plumbing</string>
+    <string name="label_wifi">Wi-Fi</string>
+    <string name="label_electrical">Electrical</string>
+    <string name="label_report">Report Issue</string>
+    <string name="label_reported_issues">Issues Raised</string>
+    <string name="label_report_new_issue">Report an issue</string>
+    <string name="label_register_new_visitor">Register a new visitor</string>
+    <string name="label_your_visitors">Your Visitors</string>
+
+    <!-- input phone activity-->
+    <string name="label_next">आगे बढ़ें</string>
+    <string name="label_try_again">Try Again</string>
+    <string name="label_contact_stayabode">Contact StayAbode</string>
+    <string name="label_enter_mobile">Please enter your registered mobile number</string>
+    <string name="label_mobile_prefix">+91 -</string>
+    <string name="label_welcome_msg_prefix">Hello,</string>
+    <string name="label_welcome_msg_suffix">Let\'s get you started</string>
+    <string name="label_phone_validation_error">Please enter a 10 digit mobile number.</string>
+    <string name="label_phone_registration_error">This number does not match your registered mobile number.
+        Please contact us to change your number.</string>
+
+    <!-- input otp activity-->
+    <string name="label_welcome_otpsentto_prefix">OTP sent to</string>
+    <string name="label_enter_otp">Please enter the 6 digit OTP</string>
+    <string name="label_resendotp">Resend OTP</string>
+    <string name="label_done">Done</string>
+    <string name="label_incorrect_otp_error">Incorrect OTP</string>
+
+    <!--base activity-->
+    <string name="label_no_internet">बधाई हो</string>
+    <string name="label_retry_internet">गृह भ्रमण सूची पर जाएं</string>
+
+    <!--visitor activity-->
+    <string name="label_no_visitor">NO VISITORS REGISTERED</string>
+
+    <!--issues activity-->
+    <string name="label_no_issues">NO ISSUES YET</string>
+    <string name="issue_reopen">Reopen</string>
+    <string name="issue_cancel">Cancel</string>
+
+    <!--feedback activity-->
+    <string name="label_send_feedback">Submit Feedback</string>
+    <string name="label_write_a_review">Write a review..</string>
+    <string name="label_rate_experience">Rate your experience</string>
+
+    <!--checkout after login activity-->
+    <string name="label_get_rental_receipts">Get rental receipts</string>
+    <string name="label_your_email">Your Email Address</string>
+
+    <!--Profile activity-->
+    <string name="label_allow_neighbours_fb">Allow neighbours to view your facebook profile</string>
+
+    <!--Rentals activity-->
+    <string name="label_title_rentals">Rentals</string>
+    <string name="label_your_dues">Your Dues</string>
+
+    <string name="label_account_number">Account number  -</string>
+    <string name="label_ifsc_code">ifsc code</string>
+    <string name="label_bank_name">bank name</string>
+    <string name="label_detailed_breakup">Detailed Breakup</string>
+    <string name="label_hide_details">Hide details</string>
+
+    <!--house principles activity-->
+    <string name="label_house_principles">HOUSE PRINCIPLES</string>
+
+    <!--Request Rental receipt activity-->
+    <string name="label_dues">Dues</string>
+    <string name="label_request">Request</string>
+    <string name="label_choose_months">Choose the month(s)</string>
+    <string name="select_all">Select All</string>
+    <string name="label_broadcast">Broadcasts</string>
+
+    <!--login activity-->
+    <string name="login_with_facebook">Login with facebook</string>
+    <string name="i_am_a_tenant">I am a StayAbode resident</string>
+    <string name="label_general_feedback">We’d love to hear from you on how we could better your stay experience.</string>
+    <string name="label_your_ideas">Your ideas..</string>
+    <string name="label_send_general_feedback">Submit</string>
+    <string name="not_a_resident">Not a resident?</string>
+    <string name="toolbar_button_delete">DELETE</string>
+
+    <!--Abode Application-->
+    <string name="mixpanel_dev_token">86c4055b1a0c88cfb122f7c540ff249ennnnc1</string>
+    <string name="mixpanel_prod_token">b7edfffe7a9722b96735e9da359cc400nnnnc1</string>
+
+    <string name="browse_properties">Check out our homes</string>
+    <string name="label_edit_visitor">Edit Visitor</string>
+    <string name="label_no_generic_error">SOMETHING WENT WRONG!</string>
+    <string name="label_generic_error_desc">We are not proud of this. Or this ‘error plane’ joke.</string>
+    <string name="label_your_experience">Tell us about your experience…</string>
+    <string name="label_reopen_issue">REOPEN ISSUE</string>
+    <string name="login_content">Hassle free, community rich living</string>
+    <string name="label_move_in">Move in</string>
+    <string name="label_move_out">Move out</string>
+    <string name="label_what_went_wrong">What went wrong?</string>
+    <string name="reopen_issue_hint">What went wrong?</string>
+    <string name="label_payment_type">PAYMENT TYPE</string>
+    <string name="label_payment_type_value">NEFT ONLY</string>
+    <string name="label_notifications">Notifications</string>
+    <string name="label_no_notifications">ALL CLEAR HERE!</string>
+    <string name="label_no_notifications_desc">Clutter cleared! We\'ll notify you when there is something new</string>
+    <string name="label_events">Events</string>
+    <string name="label_confirm_guests">confirm</string>
+
+    <string name="google_maps_key">AIzaSyD5mUrwLVVHStqwlYAjli6E31S6A85kbxY</string>
+    <string name="label_rsvps">RSVPs</string>
+    <string name="label_event_preferences">preferences</string>
+    <string name="label_hint_answer">Answer</string>
+    <string name="label_contract_extension">contract extension</string>
+    <string name="label_submit">Submit</string>
+    <string name="contract_extension_button_cancel">Cancel</string>
+    <string name="contract_extension_button_change">Change</string>
+
+    <!--events activity-->
+    <string name="label_no_events">NO EVENTS</string>
+    <string name="label_no_events_desc">Got an idea for an event? Suggest one to your Community Manager!</string>
+    <string name="label_event_detail">Event Details</string>
+    <string name="label_new_event">New Event</string>
+    <string name="label_view_event">View Event</string>
+    <string name="label_rental_receipts">RECEIPTS</string>
+    <string name="label_rental_history">HISTORY</string>
+    <string name="label_rental_depost">Deposit</string>
+    <string name="label_rental_rent">Rent</string>
+    <string name="label_rental_late_payment_dialog">Late payment fees is calculated as follows</string>
+    <string name="label_rental_late_payment">Late payment</string>
+
+    <string name="label_rental_other_charges">Other charges</string>
+    <string name="label_rental_other_charges_dialog">Other charges primarily cover</string>
+
+    <string name="label_request_rental_receipt">Rental Receipts</string>
+    <string name="label_payment_history">Payment history</string>
+    <string name="label_no_dues">No dues</string>
+    <string name="label_extend_contract">Extend Contract</string>
+    <string name="label_expiration_days">Your contract with Stayabode expires in</string>
+    <string name="label_status_heading_prefix">Your request to extend your stay till</string>
+    <string name="label_status_heading_suffix">has been received. We’ll get back to you shortly.</string>
+    <string name="label_payment_history_load_more">Load more</string>
+    <string name="label_thankyou">Thank you!</string>
+    <string name="label_event_over">This event is over</string>
+    <string name="label_payment_history_send_mail">YES, SEND ME A MAIL</string>
+    <string name="label_payment_history_subtitle">Would you like us to send you an email with receipts of all your transactions?</string>
+    <string name="label_older_than_history">Older transactions</string>
+    <string name="label_no_dues_subtext">You\'re all clear!</string>
+    <string name="label_account_number_unique">Unique to you</string>
+    <string name="label_account_info">This account number is unique to you. Please use it to make only your payments.</string>
+    <string name="label_no_payment_history_desc">Would you like us to send you an email with receipts of all your transactions?</string>
+    <string name="label_no_payments_send_mail">YES, SEND ME A MAIL</string>
+    <string name="label_extend_within_prefix">Request an extension within the next</string>
+    <string name="label_community_manager_card_title">Kindly let me know in case you have any concerns</string>
+    <string name="label_contract_extension_title">Move out scheduled on</string>
+    <string name="label_contract_extension_sub_title">Extend your stay with us! Select your preferred move out date below</string>
+    <string name="label_rsvp_full_status">We’re all booked!</string>
+    <string name="label_acc_detail_heading">Please make payments to the following account details.</string>
+    <string name="label_acc_detail_heading_prefix">Please make the payment of</string>
+    <string name="label_acc_detail_heading_suffix">to the following account details</string>
+    <string name="label_other_charges_condition1">Repairs and maintenance charges for requests/damages that are not covered in the agreement</string>
+    <string name="label_other_charges_condition2">Electricity charges (applicable only when you cross the soft limit as mentioned in the rental agreement)</string>
+    <string name="label_other_charges_condition3">Any other charges that are not covered in your monthly rent, as mentioned in the rental agreement</string>
+    <string name="label_no_payments">You have not made any payments yet.</string>
+    <string name="label_no_records">NO RECORDS</string>
+    <string name="label_enter_password">पास वर्ड दर्ज करें</string>
+    <string name="label_login">लॉग इन</string>
+    <string name="label_enter_username">उपयोगकर्ता नाम दर्ज करें</string>
+    <string name="label_add_edit_text">Add</string>
+
+    //
+
+    <string name="label_login_option_dpo">DPO</string>
+    <string name="label_login_option_cdpols">CDPO/LS</string>
+    <string name="label_login_option_bm">BM</string>
+    <string name="label_login_option_other">OTHER</string>
+    <string name="label_enter_awc">आंगनवाड़ी केंद्र कोड का चयन करें</string>
+    <string name="label_previous">पीछे जाएं</string>
+    <string name="label_answer_subqs">संबंधित प्रश्नों के उत्तर दें</string>
+
+
+</resources>

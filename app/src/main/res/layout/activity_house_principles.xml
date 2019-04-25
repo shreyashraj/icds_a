@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.rd.PageIndicatorView
+        android:id="@+id/page_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pager"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/margin_72"
+        attrs:piv_animationType="worm"
+        attrs:piv_interactiveAnimation="true"
+        attrs:piv_radius="4dp"
+        attrs:piv_viewPager="@id/pager" />
+
+    <include
+        android:id="@+id/transparent_toolbar"
+        layout="@layout/toolbar_base_transparent"
+        android:background="@android:color/transparent" />
+
+</RelativeLayout>

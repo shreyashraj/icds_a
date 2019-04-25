@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edit_date"
+        fontPath="fonts/Raleway-Regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="@dimen/margin_xxxlarge"
+        android:layout_marginRight="@dimen/margin_xxxlarge"
+        android:layout_marginTop="@dimen/margin_xxxlarge"
+        android:hint="@string/label_date"
+        app:met_floatingLabel="normal"
+        app:met_primaryColor="@color/black_100"
+        app:met_textColor="@color/black_87" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edit_time"
+        fontPath="fonts/Raleway-Regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_date"
+        android:layout_marginLeft="@dimen/margin_xxxlarge"
+        android:layout_marginRight="@dimen/margin_xxxlarge"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:hint="@string/label_time"
+        app:met_floatingLabel="normal"
+        app:met_primaryColor="@color/black_100"
+        app:met_textColor="@color/black_87" />
+
+
+    <Button
+        style="@style/ButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_xlarge"
+        android:layout_marginLeft="@dimen/margin_xxxlarge"
+        android:layout_marginRight="@dimen/margin_xxxlarge"
+        android:text="@string/label_schedule_cleaning" />
+
+</RelativeLayout>

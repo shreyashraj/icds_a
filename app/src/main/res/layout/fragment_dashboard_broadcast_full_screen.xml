@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout_broadcast"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/broadcast_bg"
+    android:fillViewport="true"
+    android:paddingBottom="@dimen/margin_xlarge"
+    android:paddingTop="?attr/actionBarSize">
+
+    <RelativeLayout
+        android:id="@+id/layout_broadcast"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_xlarge">
+
+        <TextView
+            android:id="@+id/text_broadcast_label"
+            style="@style/BodyTextBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_broadcast_text"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/label_new_broadcast"
+            android:textColor="@color/coral_pink"
+            android:textSize="14sp"
+            android:transitionName="@string/anim_broadcast_text" />
+
+        <View
+            android:id="@+id/broadcast_line"
+            android:layout_width="25dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/text_broadcast_label"
+            android:layout_marginLeft="@dimen/margin_broadcast_text"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/coral_pink" />
+
+
+        <TextView
+            android:id="@+id/text_broadcast"
+            style="@style/BroadcastText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/broadcast_line"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_broadcast_text"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/label_dummy_broadcast"
+            android:textColor="@android:color/white" />
+
+
+        <TextView
+            android:id="@+id/text_time"
+            style="@style/BodyTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_broadcast"
+            android:layout_marginBottom="@dimen/margin_6"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:text="at 2:30 pm, Wednesday"
+            android:textColor="@color/broadcast_sub_text" />
+
+        <TextView
+            android:id="@+id/text_venue"
+            style="@style/BodyTextSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_time"
+            android:layout_marginBottom="@dimen/margin_xlarge"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:text="Venue : Common room, Nester"
+            android:textColor="@color/broadcast_sub_text" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_venue"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:gravity="bottom">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/broadcaster_pic"
+                android:layout_width="@dimen/profile_small_width"
+                android:layout_height="@dimen/profile_small_width"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:src="@mipmap/ic_profile_placeholder"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/margin_1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_small_width"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_toRightOf="@+id/broadcaster_pic"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_broadcaster_name"
+                    style="@style/BodyTextBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="@color/white" />
+
+                <TextView
+
+                    android:id="@+id/text_broadcaster_title"
+                    style="@style/BodyTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="@color/white_70" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_below="@+id/broadcaster_pic"
+                style="@style/BodyTextSemiBold"
+                android:layout_marginRight="@dimen/margin_broadcast_text"
+                android:layout_marginLeft="@dimen/margin_broadcast_text"
+                android:textColor="@color/event_button_text_color"
+                android:background="@drawable/button_light_grey_bg"
+                android:gravity="center"
+                android:text="@string/label_view_event"
+                android:id="@+id/btn_view_event"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_xlarge" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</ScrollView>
