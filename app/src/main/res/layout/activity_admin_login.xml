@@ -11,11 +11,50 @@
 
 
         <TextView
-            android:id="@+id/text_enterusername"
+            android:id="@+id/text_enteruserid"
             style="@style/BodyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="लॉगिन आईडी" />
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:id="@+id/layout_userid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_enteruserid"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:text="CDPO_ARARIA"
+                android:id="@+id/edit_userid"
+                style="@style/BankDetailsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="25"
+                android:textCursorDrawable="@null" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/text_enterusername"
+            style="@style/BodyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_userid"
             android:layout_marginLeft="@dimen/margin_large"
             android:layout_marginTop="@dimen/margin_large"
             android:text="@string/label_enter_username" />
@@ -32,7 +71,7 @@
 
 
             <EditText
-                android:text="CDPO_ARARIA"
+                android:text="Apurva"
                 android:id="@+id/edit_username"
                 style="@style/BankDetailsText"
                 android:layout_width="match_parent"

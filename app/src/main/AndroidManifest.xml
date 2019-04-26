@@ -48,7 +48,7 @@
         </activity>
 
         <activity
-            android:name="com.stayabode.dashboard.activities.DashboardActivity"
+            android:name=".features.login.activities.DashboardActivity"
             android:screenOrientation="portrait"/>
 
 

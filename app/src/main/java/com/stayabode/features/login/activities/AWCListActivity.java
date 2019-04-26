@@ -116,8 +116,6 @@ public class AWCListActivity extends BaseActivity implements AWCListView {
 
         SharedPrefManager.getInstance().setQuestionsResponse(mQuestionsResponseString);
 
-
-
         hideLoadingView();
 
         Intent i = new Intent(AWCListActivity.this, QuestionsActivity.class);

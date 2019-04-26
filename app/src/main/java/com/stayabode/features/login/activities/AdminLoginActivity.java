@@ -20,8 +20,6 @@ import com.stayabode.features.login.presenters.AdminLoginPresenter;
 import com.stayabode.features.login.views.AdminLoginView;
 import com.stayabode.net.response.getmodels.AdminLoginResponse;
 
-import java.util.concurrent.TimeUnit;
-
 import utils.IntentKeys;
 import utils.MixPanelTracker;
 import utils.NetUtils;
@@ -34,7 +32,7 @@ import utils.ViewUtils;
 public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
 
     private AdminLoginPresenter mAdminLoginPresenter;
-    private EditText mEtUserName;
+    private EditText mEtUserId;
     private Button mBtnLogin;
     private TextView mTvPhoneError;
     private View mViewDivider;
@@ -45,11 +43,12 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
     private TextView mButtonBrowseProperties;
     private EditText mEtUserpassword;
     private RadioGroup mLoginRadioGroup;
-    private String userName;
+    private String userId;
     private String password;
     private String selection;
     private LinearLayout mInputOtherlayout;
     private View mInputOtherDivider;
+    private EditText mEtUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +59,11 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
         disableBackArrow();
 
 
-
         MixPanelTracker.trackEvent(MixPanelTracker.PHONE_VERIFICATION_SCREEN);
 
         mTvPhoneError = (TextView) findViewById(R.id.text_error);
-        mEtUserName = (EditText) findViewById(R.id.edit_username);
+        mEtUserId = (EditText) findViewById(R.id.edit_userid);
+        mEtUsername = (EditText) findViewById(R.id.edit_username);
         mEtUserpassword = (EditText) findViewById(R.id.edit_password);
         mBtnLogin = (Button) findViewById(R.id.button_login);
         mViewDivider = findViewById(R.id.divider_horizontal);
@@ -103,9 +102,24 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
 
 
         mBtnLogin.setEnabled(true);
-        mUserName = SharedPrefManager.getInstance().getFirstName();
 
-        mEtUserName.addTextChangedListener(new TextWatcher() {
+        mEtUserId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                changePhonePrefixColor(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+        });
+
+        mEtUsername.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 changePhonePrefixColor(s);
@@ -146,35 +160,18 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
                 if (NetUtils.isInternetConnected(AdminLoginActivity.this)) {
                     // showLoadingView();
 
-                    userName = mEtUserName.getText().toString().trim();
+                    SharedPrefManager.getInstance().setFirstName(mEtUsername.getText().toString());
+                    SharedPrefManager.getInstance().setUserId(mEtUserId.getText().toString());
+
+
+                    userId = mEtUserId.getText().toString().trim();
                     password = mEtUserpassword.getText().toString().trim();
 
-                    mAdminLoginPresenter.loginAdmin(userName, password, selection);
+                    mAdminLoginPresenter.loginAdmin(userId, password, selection);
                 } else {
                     // showNoInternetView();
                 }
 
-
-//                Intent i = new Intent(AdminLoginActivity.this, QuestionsActivity.class);
-//                startActivity(i);
-
-//
-//
-//                if (validatePhoneNumber(mEtUserName.getText().toString())) {
-//                    MixPanelTracker.trackEvent(MixPanelTracker.REQUEST_OTP_CLICKED);
-//                    mAdminLoginPresenter = new AdminLoginPresenter();
-//                    mAdminLoginPresenter.setView(AdminLoginActivity.this);
-//
-//                    if (NetUtils.isInternetConnected(AdminLoginActivity.this)) {
-//                        showPleaseWaitLoadingView();
-//                        mFbUserId = SharedPrefManager.getInstance().getFbUserId();
-//                        mAdminLoginPresenter.loginAdmin(mEtUserName.getText().toString().trim(), mFbUserId);
-//                    } else {
-//                        ViewUtils.showSnackBar(AdminLoginActivity.this,
-//                                mCoordinatorLayout, Constants.INTERNET_ERROR);
-//                    }
-//
-//                }
             }
         });
 
@@ -202,7 +199,9 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
 
     private void changePhonePrefixColor(CharSequence s) {
 
-        if (mEtUserName.getText().toString().trim().length() > 0 && mEtUserpassword.getText().toString().length() > 0) {
+        if (mEtUserId.getText().toString().trim().length() > 0
+                && mEtUserpassword.getText().toString().length() > 0
+                && mEtUsername.getText().toString().length() > 0) {
             mBtnLogin.setEnabled(true);
         } else {
             mBtnLogin.setEnabled(false);
@@ -213,10 +212,10 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
 
     @Override
     public void onLoginSuccessful(AdminLoginResponse adminLoginResponse) {
-        String token=adminLoginResponse.getToken();
+        String token = adminLoginResponse.getToken();
         SharedPrefManager.getInstance().setAccessToken(token);
         hideLoadingView();
-        Intent i = new Intent(AdminLoginActivity.this, AWCListActivity.class);
+        Intent i = new Intent(AdminLoginActivity.this, DashboardActivity.class);
         i.putExtra(IntentKeys.INTENT_LOGINRESP, (Parcelable) adminLoginResponse);
         startActivity(i);
 

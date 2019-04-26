@@ -48,7 +48,7 @@ public class AdminLoginPresenter {
                 BaseResponse baseResponse = response.body();
 
                 if (response.isSuccess()) {
-4                    String requestQuery = response.raw().request().httpUrl().encodedQuery();
+                    String requestQuery = response.raw().request().httpUrl().encodedQuery();
 
                     if (StringUtils.equals(baseResponse.status, Status.STATUS_SUCCESS)) {
                         Timber.v("response" + response.body());
