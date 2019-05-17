@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.stayabode.R;
 import com.stayabode.base.activities.BaseActivity;
 import com.stayabode.features.login.presenters.AdminLoginPresenter;
@@ -60,6 +61,17 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
 
 
         MixPanelTracker.trackEvent(MixPanelTracker.PHONE_VERIFICATION_SCREEN);
+
+        if (SharedPrefManager.getInstance().getIsLoggedIn()) {
+            AdminLoginResponse adminLoginResponse = (new Gson()).fromJson(SharedPrefManager.getInstance().getLoginResponse(),
+                    AdminLoginResponse.class);
+
+            Intent i = new Intent(AdminLoginActivity.this, DashboardActivity.class);
+            i.putExtra(IntentKeys.INTENT_LOGINRESP, (Parcelable) adminLoginResponse);
+            startActivity(i);
+            finish();
+
+        }
 
         mTvPhoneError = (TextView) findViewById(R.id.text_error);
         mEtUserId = (EditText) findViewById(R.id.edit_userid);
@@ -212,12 +224,18 @@ public class AdminLoginActivity extends BaseActivity implements AdminLoginView {
 
     @Override
     public void onLoginSuccessful(AdminLoginResponse adminLoginResponse) {
+        SharedPrefManager.getInstance().setIsLoggedIn(true);
         String token = adminLoginResponse.getToken();
         SharedPrefManager.getInstance().setAccessToken(token);
+
+        String logionRespStr = (new Gson()).toJson(adminLoginResponse);
+        SharedPrefManager.getInstance().setLoginResponse(logionRespStr);
+
         hideLoadingView();
         Intent i = new Intent(AdminLoginActivity.this, DashboardActivity.class);
         i.putExtra(IntentKeys.INTENT_LOGINRESP, (Parcelable) adminLoginResponse);
         startActivity(i);
+        finish();
 
     }
 

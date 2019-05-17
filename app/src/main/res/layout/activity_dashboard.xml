@@ -4,60 +4,136 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/layout_ap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_margin="30dp"
+
+        <LinearLayout
+            android:id="@+id/layout_ap"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/planning" />
-
-        <TextView
-            android:layout_marginBottom="20dp"
-            style="@style/ButtonText"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:paddingTop="@dimen/margin_6"
-            android:text="आंगनवाड़ी प्रश्नावली" />
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:src="@drawable/planning" />
+
+            <TextView
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="20dp"
+                android:paddingTop="@dimen/margin_6"
+                android:text="आंगनवाड़ी प्रश्नावली" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_gb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:src="@drawable/runningman" />
+
+            <TextView
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="20dp"
+                android:paddingTop="@dimen/margin_6"
+                android:text="गृह भ्रमण" />
+        </LinearLayout>
+
     </LinearLayout>
 
-
     <LinearLayout
-        android:id="@+id/layout_gb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_margin="30dp"
+
+        <LinearLayout
+            android:id="@+id/layout_logout"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/runningman" />
-
-        <TextView
-            android:layout_marginBottom="20dp"
-            style="@style/ButtonText"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:paddingTop="@dimen/margin_6"
-            android:text="गृह भ्रमण" />
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:src="@drawable/exitlogout" />
+
+            <TextView
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="20dp"
+                android:paddingTop="@dimen/margin_6"
+                android:text="लाग आउट" />
+        </LinearLayout>
+
+
+        <LinearLayout
+          android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:src="@drawable/runningman" />
+
+            <TextView
+                style="@style/ButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="20dp"
+                android:paddingTop="@dimen/margin_6"
+                android:text="गृह भ्रमण" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

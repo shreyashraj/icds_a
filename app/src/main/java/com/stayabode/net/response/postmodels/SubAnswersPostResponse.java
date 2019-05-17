@@ -16,6 +16,19 @@ public class SubAnswersPostResponse extends BaseResponse {
     private Integer nextQuestionId;
     @SerializedName("name")
     private Integer name;
+    @SerializedName("validation")
+    private String validation;
+    @SerializedName("q_name")
+    private String questionName;
+
+
+    public String getQuestionName() {
+        return questionName;
+    }
+
+    public void setQuestionName(String questionName) {
+        this.questionName = questionName;
+    }
 
     public Integer getQuestionId() {
         return questionId;
@@ -47,6 +60,14 @@ public class SubAnswersPostResponse extends BaseResponse {
 
     public void setName(Integer name) {
         this.name = name;
+    }
+
+    public String getValidation() {
+        return validation;
+    }
+
+    public void setValidation(String validation) {
+        this.validation = validation;
     }
 }
 

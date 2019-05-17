@@ -14,6 +14,16 @@ public class AdminLoginPostResponse extends BaseResponse {
     private String password;
     @SerializedName("selection")
     private String selection;
+    @SerializedName("token")
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public String getUsername() {
         return username;

@@ -1,5 +1,6 @@
 package com.stayabode.features.login.activities;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.stayabode.R;
@@ -36,11 +36,12 @@ import com.stayabode.net.response.getmodels.QuestionObject;
 import com.stayabode.net.response.getmodels.QuestionsResponse;
 import com.stayabode.net.response.getmodels.SubQuestionObject;
 import com.stayabode.net.response.postmodels.AnswersPostResponse;
+import com.stayabode.net.response.postmodels.HomeVisitObject;
+import com.stayabode.net.response.postmodels.HomeVisitResponse;
 import com.stayabode.net.response.postmodels.SubAnswersPostBaseResponse;
 
-import java.security.Key;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,12 +53,26 @@ import timber.log.Timber;
 import utils.Constants;
 import utils.IntentKeys;
 import utils.SharedPrefManager;
-import utils.Validations;
-import utils.ViewUtils;
+
+import static utils.Constants.LM;
+import static utils.Constants.MB10;
+import static utils.Constants.MB5;
+import static utils.Constants.NM;
+import static utils.Constants.RADIOGPP5;
+import static utils.Constants.RADIOPOSH3;
+import static utils.Constants.RADIOSPSP4;
+import static utils.Constants.RADIOTVHSN;
+import static utils.Constants.VALIDATION_CHECK;
+import static utils.Constants.VALIDATION_EQ;
+import static utils.Constants.VALIDATION_GOTO;
+import static utils.Constants.VALIDATION_LIST;
+import static utils.Constants.VALIDATION_LT;
+import static utils.Constants.VALIDATION_MAX;
 
 /**
  * Created by VarunBhalla on 16/11/16.
  */
+
 public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
     private QuestionsPresenter mQuestionsPresenter;
@@ -91,7 +106,10 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
     private AnswersPostResponse mCurrentAprMultiAnswers;
     private String mValidation = "";
 
-    HashMap<Integer, String> mListGuideMapSubmissions = new HashMap<>();
+    HashMap<String, String> mQValidation = new HashMap<>();
+
+    ArrayList<HomeVisitObject> mListGuideMapSubmissions = new ArrayList<>();
+    private Integer mCurrentQuestionId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +121,6 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
         Intent questionResponseIntent = getIntent();
         questionResponse = (QuestionsResponse) questionResponseIntent.getParcelableExtra(IntentKeys.INTENT_QUESTIONSRESP);
-
 
         mGroupName = (TextView) findViewById(R.id.text_group);
         mQuestion = (TextView) findViewById(R.id.text_question);
@@ -117,15 +134,11 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         mBtnAddAnswers = (CircleImageView) findViewById(R.id.btn_add);
         mBtnAnswerSubQuestions = (Button) findViewById(R.id.button_answer_subquestions);
 
-
         mQuestionsPresenter = new QuestionsPresenter();
         mQuestionsPresenter.setView(this);
 
-
         mBtnPreviousQuestion.setEnabled(false);
-
         questionSequence = new HashMap<>();
-
 
         final Gson gson = new Gson();
         questionResponse = gson.fromJson(SharedPrefManager.getInstance().getQuestionsResponse(), QuestionsResponse.class);
@@ -136,11 +149,9 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         mBtnPreviousQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mCurrentQuestionIndex--;
                 mCurrentApr = questionSequence.get(mCurrentQuestionIndex);
                 showPreviousQuestion(mCurrentApr);
-
             }
         });
 
@@ -150,60 +161,18 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
             public void onClick(View v) {
 
                 if (mCurrentApr != null) {
+                    try {
+                        if (mCurrentApr.getValidation().contains("#")) {
+                            mQValidation.put(mCurrentApr.getValidation(), mCurrentApr.getAnswer());
+                        }
+                    } catch (Exception e) {
 
-//                    String previousAnswer;
-//                    try {
-//                        AnswersPostResponse previousAnswerResp = questionSequence.get(mCurrentQuestionIndex - 1);
-//                        previousAnswer = previousAnswerResp.getAnswer();
-//                    } catch (Exception e) {
-//                        previousAnswer = "";
-//                    }
-//
-//
-//                    try {
-//                        mValidation = questionSequence.get(mCurrentQuestionIndex).getValidation();
-//                    } catch (Exception e) {
-//                        mValidation = "";
-//                    }
-//
-//
-//                    if (mValidation.equalsIgnoreCase(Validations.VALIDATION_GT) &&
-//                            Integer.parseInt(mCurrentApr.getAnswer()) > Integer.parseInt(previousAnswer)) {
-//                        ViewUtils.showSnackBar(QuestionsActivity.this, mCoordinatorLayout, "Value should be greater than " + previousAnswer);
-//                    } else if (mValidation.equalsIgnoreCase(Validations.VALIDATION_LT) &&
-//                            Integer.parseInt(mCurrentApr.getAnswer()) < Integer.parseInt(previousAnswer)) {
-//                        ViewUtils.showSnackBar(QuestionsActivity.this, mCoordinatorLayout, "Value should be less than " + previousAnswer);
-//                    } else if (mValidation.equalsIgnoreCase(Validations.VALIDATION_GT20) &&
-//                            Integer.parseInt(mCurrentApr.getAnswer()) > 20) {
-//                        ViewUtils.showSnackBar(QuestionsActivity.this, mCoordinatorLayout, "Value should be greater than 20");
-//                    } else if (mValidation.equalsIgnoreCase(Validations.VALIDATION_LT10) &&
-//                            Integer.parseInt(mCurrentApr.getAnswer()) < 10) {
-//                        ViewUtils.showSnackBar(QuestionsActivity.this, mCoordinatorLayout, "Value should be less than 10");
-//                    } else {
-//                        questionSequence.put(mCurrentQuestionIndex, mCurrentApr);
-//                        mCurrentQuestionIndex++;
-//                        showNextQuestion();
-//                    }
-
-
-//                    if(mCurrentApr.getAnswer()==null &&
-//                            (mCurrentApr.getCheckboxAnswers()==null || mCurrentApr.getCheckboxAnswers().size()==0 )&&
-//                            (mCurrentApr.getMultipleInputAnswers()==null || mCurrentApr.getMultipleInputAnswers().size()==0) &&
-//                            null !=  mCurrentApr.getIsMandatory()
-//                            mCurrentApr.getIsMandatory().equalsIgnoreCase("Yes")){
-//
-//                    }else{
-//                        questionSequence.put(mCurrentQuestionIndex, mCurrentApr);
-//                        mCurrentQuestionIndex++;
-//                        showNextQuestion();
-//                    }
-
+                    }
 
 
                     questionSequence.put(mCurrentQuestionIndex, mCurrentApr);
-                        mCurrentQuestionIndex++;
-                        showNextQuestion();
-
+                    mCurrentQuestionIndex++;
+                    showNextQuestion();
                 }
             }
         });
@@ -220,8 +189,12 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         mBtnAnswerSubQuestions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> allanswers = multipleAnswersAdapter.getMultipleAnswersArray();
-                startSubQuestionActivity(questionResponse.getData().get(mCurrentGroup).getData().get(mCurrentApr.getQuestionId()).getSubQuestions(), allanswers);
+                try {
+                    ArrayList<String> allanswers = multipleAnswersAdapter.getMultipleAnswersArray();
+                    startSubQuestionActivity(questionResponse.getData().get(mCurrentGroup).getData().get(mCurrentApr.getQuestionId()).getSubQuestions(), allanswers);
+                } catch (Exception e) {
+
+                }
             }
         });
     }
@@ -231,16 +204,51 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         String message = Constants.REOPEN_ISSUE_DIALOG_LABEL;
         String positiveButtonText = Constants.ADD_ANSWER_POSITIVE_BUTTON;
 
+        final LinearLayout wrapper = new LinearLayout(this);
+        wrapper.setOrientation(LinearLayout.VERTICAL);
+
         final EditText input = new EditText(this);
+
+        final TextView textQ1 = new EditText(this);
+        RadioGroup rQq1 = new RadioGroup(this);
+        RadioButton rb1q1 = new RadioButton(this);
+        RadioButton rb2q1 = new RadioButton(this);
+        rQq1.addView(rb1q1);
+        rQq1.addView(rb2q1);
+
+        final TextView textQ2 = new EditText(this);
+        RadioGroup rQq2 = new RadioGroup(this);
+        RadioButton rb1q2 = new RadioButton(this);
+        RadioButton rb2q2 = new RadioButton(this);
+        rQq2.addView(rb1q2);
+        rQq2.addView(rb2q2);
+
+        wrapper.addView(input);
+
+
+//        if (mCurrentQuestionId == 112) {
+//
+//            textQ1.setText("dfSASAD");
+//            textQ2.setText("dfSSDADSASAD");
+//
+//
+//            wrapper.addView(textQ1);
+//            wrapper.addView(rQq1);
+//            wrapper.addView(textQ2);
+//            wrapper.addView(rQq2);
+//
+//        }
+//
+
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
-        input.setLayoutParams(lp);
+        wrapper.setLayoutParams(lp);
 
 
         new AlertDialog.Builder(this)
                 .setMessage("")
-                .setView(input)
+                .setView(wrapper)
                 .setPositiveButton(positiveButtonText, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -248,8 +256,6 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
                         multipleAnswersArray.add(inputAnswer);
                         multipleAnswersAdapter.notifyItemInserted(multipleAnswersArray.size());
                         mCurrentAprMultiAnswers.setMultipleInputAnswers(multipleAnswersAdapter.getMultipleAnswersArray());
-
-
 
 
                         mCurrentApr = mCurrentAprMultiAnswers;
@@ -270,7 +276,6 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         } else {
             mBtnPreviousQuestion.setEnabled(true);
         }
-
     }
 
     private void showFirstQuestion() {
@@ -288,65 +293,183 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void showNextQuestion() {
 
-        nextQuestionId = mCurrentApr.getNextQuestionId();
+        try {
 
-        mCurrentApr = new AnswersPostResponse();
+            nextQuestionId = mCurrentApr.getNextQuestionId();
 
-        if (nextQuestionId == -1) {
+//            if (nextQuestionId == 3) {
+//                nextQuestionId = 112;
+//            } else if (nextQuestionId == 113) {
+//                nextQuestionId = 116;
+//            } else if (nextQuestionId == 117) {
+//                nextQuestionId = 118;
+//            } else if (nextQuestionId == 119) {
+//                nextQuestionId = 121;
+//            } else if (nextQuestionId == 122) {
+//                nextQuestionId = 133;
+//            } else if (nextQuestionId == 134) {
+//                nextQuestionId = 145;
+//            } else if (nextQuestionId == 146) {
+//                nextQuestionId = 153;
+//            } else if (nextQuestionId == 154) {
+//                nextQuestionId = 162;
+//            } else if (nextQuestionId == 163) {
+//                nextQuestionId = 163;
+//            } else if (nextQuestionId == 164) {
+//                nextQuestionId = 164;
+//            } else if (nextQuestionId == 165) {
+//                nextQuestionId = 169;
+//            }
 
-            showGenericErrorView();
+//            put(116, "अगले महीने सम्भावित प्रसव");
+//            put(118, "पिछले माह मे मातृ जटिलता ");
+//            put(121, "पिछले माह मे मातृ जटिलता ");
+//            put(133, "पिछले माह मे प्रसव वाली महिला");
+//            put(145, "कमजोर नवजात");
+//            put(153, "अगले महीने 6 माह पूर्ण करने वाले बच्चे (बच्चे जो अभी 5 महीने के है) ");
+//            put(162, "10 माह का बच्चा");
+//            put(163, "पिछले माह मे मातृ मृत्यु");
+//            put(164, "पिछले माह मे हुए 0 से 5 बर्ष के बच्चों की मृत्यु");
+//            put(169, "पिछले तीन माह से लगातार नारंगी रंग मे आने वाला बच्चा जो बीमार भी है ");
+
+            mCurrentApr = new AnswersPostResponse();
+
+            if (nextQuestionId == -1) {
+
+                showGenericErrorView();
+
+            } else {
+
+                mGroupName.setText(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getG_name());
 
 
-        } else {
+                String answer;
+                try {
+                    answer = questionSequence.get(nextQuestionId).getAnswer();
+                } catch (Exception e) {
+                    answer = null;
+                }
 
-            mGroupName.setText(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getG_name());
-            mQuestion.setText(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getQ_name());
+
+                String questionType = questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getQ_type();
 
 
-            String answer;
-            try {
-                answer = questionSequence.get(nextQuestionId).getAnswer();
-            } catch (Exception e) {
-                answer = null;
+                String qName = questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getQ_name();
+
+                if (qName.contains(RADIOPOSH3)) {
+
+                    String strReplace = resolveQuestion(RADIOPOSH3);
+                    qName = qName.replace(RADIOPOSH3, strReplace);
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+                } else if (qName.contains(RADIOSPSP4)) {
+                    qName = qName.replace(RADIOSPSP4, resolveQuestion(RADIOSPSP4));
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+                } else if (qName.contains(RADIOGPP5)) {
+                    qName = qName.replace(RADIOGPP5, resolveQuestion(RADIOGPP5));
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+                } else if (qName.contains(RADIOTVHSN)) {
+                    qName = qName.replace(RADIOTVHSN, resolveQuestion(RADIOTVHSN));
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+
+
+                } else if (qName.contains(MB5)) {
+                    qName = qName.replace(MB5, resolveMonth(MB5));
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+                } else if (qName.contains(MB10)) {
+                    qName = qName.replace(MB10, resolveMonth(MB10));
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+                } else if (qName.contains(LM)) {
+                    qName = qName.replace(LM, resolveMonth(LM));
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+                } else if (qName.contains(NM)) {
+                    qName = qName.replace(NM, resolveMonth(NM));
+                    questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).setQ_name(qName);
+                }
+
+                mCurrentQuestionId = Integer.parseInt(questionResponse.getData()
+                        .get(mCurrentGroup).getData().get(nextQuestionId).getQ_id());
+
+                mQuestion.setText(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getQ_id()
+                        + ". " + questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getQ_name());
+
+
+                if (questionType.equalsIgnoreCase("radio")) {
+                    showRadioView();
+                    addRadioButtons(
+                            questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId),
+                            nextQuestionId, answer);
+
+                    mRadioGroupAnswers.setVisibility(View.VISIBLE);
+                } else if (questionType.equalsIgnoreCase("Input") ||
+                        questionType.equalsIgnoreCase("Input_validation") ||
+                        questionType.equalsIgnoreCase("Input_No")) {
+                    showInputView();
+
+                    addEditText(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId),
+                            nextQuestionId, answer, questionType);
+
+                } else if (questionType.equalsIgnoreCase("Multiple_Input")) {
+
+                    showMultipleInputView();
+
+                    addMultipleInput(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId),
+                            nextQuestionId,
+                            answer,
+                            questionSequence.get(mCurrentQuestionIndex));
+
+                } else if (questionType.equalsIgnoreCase("CheckBox")) {
+
+                    showCheckBoxView();
+                    addCheckBoxes(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId)
+                            , nextQuestionId,
+                            answer,
+                            questionSequence.get(mCurrentQuestionIndex));
+                }
+
+                mCurrentApr = questionSequence.get(mCurrentQuestionIndex);
             }
-
-            String questionType = questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getQ_type();
-
-            if (questionType.equalsIgnoreCase("radio")) {
-                showRadioView();
-                addRadioButtons(
-                        questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId),
-                        nextQuestionId, answer);
-
-                mRadioGroupAnswers.setVisibility(View.VISIBLE);
-            } else if (questionType.equalsIgnoreCase("Input") || questionType.equalsIgnoreCase("Input_validation")) {
-                showInputView();
-
-                addEditText(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId),
-                        nextQuestionId, answer,questionType);
-
-            } else if (questionType.equalsIgnoreCase("Multiple_Input")) {
-
-                showMultipleInputView();
-
-                addMultipleInput(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId),
-                        nextQuestionId,
-                        answer,
-                        questionSequence.get(mCurrentQuestionIndex));
-
-            } else if (questionType.equalsIgnoreCase("CheckBox")) {
-
-                showCheckBoxView();
-                addCheckBoxes(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId)
-                        , nextQuestionId,
-                        answer,
-                        questionSequence.get(mCurrentQuestionIndex));
-            }
-
-            mCurrentApr = questionSequence.get(mCurrentQuestionIndex);
+        } catch (Exception e) {
+            System.out.println(e);
         }
+    }
+
+    private static String resolveMonth(String key) {
+        String[] monthName = {"January", "February",
+                "March", "April", "May", "June", "July",
+                "August", "September", "October", "November",
+                "December"};
+
+        Calendar cal = Calendar.getInstance();
+        int currentMonth = cal.get(Calendar.MONTH);
+        int foundMonth = 0;
+        switch (key) {
+            case "#LM#":
+                cal.add(Calendar.MONTH, -1);
+                foundMonth = cal.get(Calendar.MONTH);
+                System.out.println(monthName[foundMonth]);
+                return monthName[foundMonth];
+            case "#NM#":
+                cal.add(Calendar.MONTH, 1);
+                foundMonth = cal.get(Calendar.MONTH);
+                System.out.println(monthName[foundMonth]);
+                return monthName[foundMonth];
+            case "#5MB":
+                cal.add(Calendar.MONTH, -5);
+                foundMonth = cal.get(Calendar.MONTH);
+                System.out.println(monthName[currentMonth] + " - " + monthName[foundMonth]);
+                return monthName[foundMonth] + " - " + monthName[currentMonth];
+            case "#10MB":
+                cal.add(Calendar.MONTH, -10);
+                foundMonth = cal.get(Calendar.MONTH);
+                System.out.println(monthName[currentMonth] + " - " + monthName[foundMonth]);
+                System.out.println(monthName[currentMonth] + " - " + monthName[foundMonth]);
+                return monthName[foundMonth] + " - " + monthName[currentMonth];
+        }
+        return "";
+
     }
 
 
@@ -354,12 +477,17 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         Intent i = new Intent(QuestionsActivity.this, SubQuestionsActivity.class);
         i.putParcelableArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONSRESP, (ArrayList<? extends Parcelable>) subQuestions);
         i.putStringArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONS_INPUTS, allanswers);
+        i.putExtra("mQValidation", mQValidation);
         startActivityForResult(i, 3);
     }
 
+    @SuppressLint("SetTextI18n")
     private void showPreviousQuestion(AnswersPostResponse mTempCurrentApr) {
         mGroupName.setText(questionResponse.getData().get(mCurrentGroup).getData().get(questionSequence.get(mCurrentQuestionIndex).getQuestionId()).getG_name());
-        mQuestion.setText(questionResponse.getData().get(mCurrentGroup).getData().get(questionSequence.get(mCurrentQuestionIndex).getQuestionId()).getQ_name());
+
+        mQuestion.setText(questionResponse.getData().get(mCurrentGroup).getData().get(questionSequence.get(mCurrentQuestionIndex).getQuestionId()).getQ_id()
+                + ". " + questionResponse.getData().get(mCurrentGroup).getData().get(questionSequence.get(mCurrentQuestionIndex).getQuestionId()).getQ_name());
+
 
         String questionType = questionResponse.getData().get(mCurrentGroup).getData().get(questionSequence.get(mCurrentQuestionIndex).getQuestionId()).getQ_type();
 
@@ -382,7 +510,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
             showInputView();
             addEditText(questionResponse.getData().get(mCurrentGroup).getData().get(questionSequence.get(mCurrentQuestionIndex).getQuestionId()),
                     questionSequence.get(mCurrentQuestionIndex).getQuestionId(),
-                    answer,questionType);
+                    answer, questionType);
         } else if (questionType.equalsIgnoreCase("Multiple_Input")) {
             showMultipleInputView();
             addMultipleInput(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId),
@@ -417,6 +545,11 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         }
 
 
+        if (multipleAnswersArray == null) {
+            multipleAnswersArray = new ArrayList<>();
+        }
+
+
         multipleAnswersAdapter = new MultipleAnswersAdapter(this, multipleAnswersArray);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mMultipleTextslayout.setLayoutManager(linearLayoutManager);
@@ -428,10 +561,11 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         mCurrentAprMultiAnswers = new AnswersPostResponse();
 
         mCurrentAprMultiAnswers.setQuestionId(currentQuestionId);
+        mCurrentAprMultiAnswers.setQuestionName(qObject.getQ_name());
         mCurrentAprMultiAnswers.setNextQuestionId(nextQuestionId);
         mCurrentAprMultiAnswers.setIsMandatory(qObject.getQ_mandatory());
         mCurrentAprMultiAnswers.setMultipleInputAnswers(multipleAnswersArray);
-
+        mCurrentAprMultiAnswers.setValidation(qObject.getQ_validation());
 
     }
 
@@ -456,7 +590,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
                 CheckBox cb = new CheckBox(this);
                 cb.setId(View.generateViewId());
                 cb.setText(options.get(i).getOption());
-                cb.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+                cb.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 
                 if (null != chkBoxAnswers && chkBoxAnswers.contains(options.get(i).getOption())) {
                     cb.setChecked(true);
@@ -477,9 +611,11 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
                         mCurrentApr = new AnswersPostResponse();
                         mCurrentApr.setQuestionId(currentQuestionId);
+                        mCurrentApr.setQuestionName(qObject.getQ_name());
                         mCurrentApr.setIsMandatory(qObject.getQ_mandatory());
                         mCurrentApr.setNextQuestionId(nextQuestionId);
                         mCurrentApr.setCheckboxAnswers(chkBoxAnswers);
+                        mCurrentApr.setValidation(qObject.getQ_validation());
 
                     }
                 });
@@ -494,32 +630,124 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
     }
 
 
-    private void addEditText(final QuestionObject qObject, final Integer currentQuestionId, String answer,String qType) {
+    private void addEditText(final QuestionObject qObject, final Integer currentQuestionId, String answer, String qType) {
+
+
+        int validationvalue = 0;
+        int validationQuestionId = 0;
+        int validationNextQuestionId = 0;
 
         final List<OptionObject> options = qObject.getOptions();
 
         mEditTextslayout.removeAllViews();
 
-
-        EditText et = new EditText(this); // this refers to the activity or the context.
+        final EditText et = new EditText(this); // this refers to the activity or the context.
         if (null != answer) {
             et.setText(answer);
         } else {
             et.setText("");
         }
 
-        if(qType.equalsIgnoreCase("Input_No") || qType.equalsIgnoreCase("Input_Validation")) {
+        if (qType.equalsIgnoreCase("Input_No") ||
+                qType.equalsIgnoreCase("Input_Validation")) {
             et.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
 
         et.setMaxLines(1);
         et.setSingleLine();
-        et.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+        et.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         et.setImeOptions(EditorInfo.IME_ACTION_DONE);
         et.setTextAppearance(this, R.style.BankDetailsText);
         et.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
+        if (qObject.getQ_validation().contains(VALIDATION_EQ)) {
+            String[] splited = qObject.getQ_validation().split(VALIDATION_EQ);
+
+
+            splited = splited[1].split("GOTO");
+
+            validationQuestionId = Integer.parseInt(splited[0]);
+            validationNextQuestionId = Integer.parseInt(splited[1]);
+
+
+            for (Map.Entry<Integer, AnswersPostResponse> entry : questionSequence.entrySet()) {
+                System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+
+                AnswersPostResponse apr = entry.getValue();
+
+                if (apr.getQuestionId() == validationQuestionId) {
+                    validationvalue = Integer.parseInt(apr.getAnswer());
+                }
+
+            }
+        } else if (qObject.getQ_validation().contains(VALIDATION_CHECK)) {
+            String[] splited = qObject.getQ_validation().split(VALIDATION_CHECK);
+
+            validationQuestionId = Integer.parseInt(splited[1]);
+
+
+            for (Map.Entry<Integer, AnswersPostResponse> entry : questionSequence.entrySet()) {
+                System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+
+                AnswersPostResponse apr = entry.getValue();
+
+                if (apr.getQuestionId() == validationQuestionId) {
+                    validationvalue = Integer.parseInt(apr.getAnswer());
+                }
+            }
+
+
+        } else if (qObject.getQ_validation().contains(VALIDATION_GOTO)) {
+            String[] splited = qObject.getQ_validation().split(VALIDATION_GOTO);
+
+            validationQuestionId = Integer.parseInt(splited[1]);
+
+            for (Map.Entry<Integer, AnswersPostResponse> entry : questionSequence.entrySet()) {
+                System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+
+                AnswersPostResponse apr = entry.getValue();
+
+                if (apr.getQuestionId() == validationQuestionId) {
+
+                    validationNextQuestionId = validationQuestionId;
+
+                }
+
+            }
+
+        } else if (qObject.getQ_validation().contains(VALIDATION_LT)) {
+            String[] splited = qObject.getQ_validation().split(VALIDATION_LT);
+
+            validationQuestionId = Integer.parseInt(splited[1]);
+
+            for (Map.Entry<Integer, AnswersPostResponse> entry : questionSequence.entrySet()) {
+                System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+
+                AnswersPostResponse apr = entry.getValue();
+
+                if (apr.getQuestionId() == validationQuestionId) {
+                    validationvalue = Integer.parseInt(apr.getAnswer());
+                }
+            }
+        } else if (qObject.getQ_validation().contains(VALIDATION_MAX)) {
+            String[] splited = qObject.getQ_validation().split(VALIDATION_MAX);
+
+            //validationQuestionId = Integer.parseInt(splited[1]);
+
+            for (Map.Entry<Integer, AnswersPostResponse> entry : questionSequence.entrySet()) {
+
+                AnswersPostResponse apr = entry.getValue();
+
+                if (apr.getQuestionId() == validationQuestionId) {
+                    validationvalue = Integer.parseInt(splited[1]);
+                }
+            }
+        }
+
+        final int finalValidationvalue = validationvalue;
+        final int finalvalidationNextQuestionId = validationNextQuestionId;
         et.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -527,15 +755,124 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                currentAnswer = s.toString();
-                nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
-
+                int checkSum = 0;
                 mCurrentApr = new AnswersPostResponse();
-                mCurrentApr.setQuestionId(currentQuestionId);
-                mCurrentApr.setAnswer(currentAnswer);
-                mCurrentApr.setIsMandatory(qObject.getQ_mandatory());
-                mCurrentApr.setNextQuestionId(nextQuestionId);
-                mCurrentApr.setValidation(qObject.getQ_validation());
+                boolean shoudSaveAnswer = true;
+                currentAnswer = s.toString();
+
+                if (qObject.getQ_validation().contains(VALIDATION_EQ)) {
+
+                    try {
+                        if (finalValidationvalue == Integer.parseInt(currentAnswer)) {
+                            nextQuestionId = finalvalidationNextQuestionId;
+                        } else {
+                            nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                        }
+                    } catch (Exception e) {
+                        nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                    }
+
+                } else if (qObject.getQ_validation().contains(VALIDATION_MAX)) {
+
+                    nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                    try {
+                        if (Integer.parseInt(currentAnswer) <= finalValidationvalue) {
+                            shoudSaveAnswer = true;
+                            mBtnNextQuestion.setEnabled(true);
+                        } else {
+                            shoudSaveAnswer = false;
+                            et.setError("Maximum value can be " + finalValidationvalue);
+                            mBtnNextQuestion.setEnabled(false);
+                        }
+                    } catch (Exception e) {
+                        shoudSaveAnswer = false;
+                        et.setError("Maximum value can be " + finalValidationvalue);
+                        mBtnNextQuestion.setEnabled(false);
+                    }
+
+                } else if (qObject.getQ_validation().contains(VALIDATION_LT)) {
+
+                    nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                    try {
+                        if (Integer.parseInt(currentAnswer) < finalValidationvalue) {
+                            shoudSaveAnswer = true;
+                            mBtnNextQuestion.setEnabled(true);
+                        } else {
+                            shoudSaveAnswer = false;
+                            et.setError("Answer should be less than " + finalValidationvalue);
+                            mBtnNextQuestion.setEnabled(false);
+                        }
+                    } catch (Exception e) {
+                        shoudSaveAnswer = false;
+                        et.setError("Answer should be less than " + finalValidationvalue);
+                        mBtnNextQuestion.setEnabled(false);
+                    }
+                } else if (qObject.getQ_validation().contains(VALIDATION_CHECK)) {
+
+                    nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                    for (Map.Entry<Integer, AnswersPostResponse> entry : questionSequence.entrySet()) {
+
+                        AnswersPostResponse apr = entry.getValue();
+
+                        try {
+                            if (apr.getQuestionId() == 136 ||
+                                    apr.getQuestionId() == 137 ||
+                                    apr.getQuestionId() == 138) {
+
+                                if (apr.getQuestionId() != Integer.parseInt(qObject.getQ_id())) {
+                                    checkSum = checkSum + Integer.parseInt(apr.getAnswer());
+                                }
+                            }
+                        } catch (Exception e) {
+
+                        }
+
+                    }
+
+                    try {
+                        checkSum = checkSum + Integer.parseInt(currentAnswer);
+                    } catch (Exception e) {
+
+                    }
+
+
+                    if (checkSum <= finalValidationvalue) {
+                        shoudSaveAnswer = true;
+                        mBtnNextQuestion.setEnabled(true);
+                    } else {
+                        shoudSaveAnswer = false;
+                        et.setError("Enter correct value");
+                        mBtnNextQuestion.setEnabled(false);
+                    }
+
+                } else if (qObject.getQ_validation().contains(VALIDATION_GOTO)) {
+
+                    try {
+                        if (Integer.parseInt(currentAnswer) == 0) {
+                            nextQuestionId = finalvalidationNextQuestionId;
+                        } else {
+                            nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                        }
+                    } catch (Exception e) {
+                        nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                    }
+
+                } else {
+                    nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
+                }
+
+
+                if (shoudSaveAnswer) {
+
+
+                    mCurrentApr.setQuestionId(currentQuestionId);
+                    mCurrentApr.setAnswer(currentAnswer);
+                    mCurrentApr.setQuestionName(qObject.getQ_name());
+                    mCurrentApr.setNextQuestionId(nextQuestionId);
+                    mCurrentApr.setIsMandatory(qObject.getQ_mandatory());
+                    mCurrentApr.setValidation(qObject.getQ_validation());
+
+                }
             }
 
 
@@ -574,7 +911,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
             RadioButton rdbtn = new RadioButton(this);
             rdbtn.setId(View.generateViewId());
             rdbtn.setText(options.get(i).getOption());
-            rdbtn.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+            rdbtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 
             if (options.get(i).getOption().equalsIgnoreCase(answer)) {
                 rdbtn.setChecked(true);
@@ -597,10 +934,10 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
                 mCurrentApr = new AnswersPostResponse();
                 mCurrentApr.setQuestionId(currentQuestionId);
                 mCurrentApr.setAnswer(currentAnswer);
+                mCurrentApr.setQuestionName(qObject.getQ_name());
                 mCurrentApr.setNextQuestionId(nextQuestionId);
+                mCurrentApr.setValidation(qObject.getQ_validation());
 
-
-                //  Toast.makeText(getBaseContext(), radioButton.getText(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -655,8 +992,16 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
                 Random randomGenerator = new Random();
                 int index = randomGenerator.nextInt(mCurrentApr.getMultipleInputAnswers().size());
 
-                mListGuideMapSubmissions.put(mCurrentApr.getQuestionId(), mCurrentApr.getMultipleInputAnswers().get(index));
-            }catch (Exception e){
+
+                HomeVisitObject hvo = new HomeVisitObject();
+                hvo.setQid(mCurrentApr.getQuestionId() + "");
+                hvo.setQname(mCurrentApr.getQuestionName());
+                hvo.setUuid("");
+                hvo.setBenificiaryname(mCurrentApr.getMultipleInputAnswers().get(index));
+
+
+                mListGuideMapSubmissions.add(hvo);
+            } catch (Exception e) {
 
             }
         }
@@ -702,18 +1047,33 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
     @Override
     protected void onErrorBtnClick() {
         super.onErrorBtnClick();
-        if(mListGuideMapSubmissions != null && !mListGuideMapSubmissions.isEmpty()){
-            for (Map.Entry <Integer, String> entry : mListGuideMapSubmissions.entrySet()) {
-                int key = entry.getKey();
-                String value = entry.getValue();
-                Timber.i("Response:: Key: %s, Value: %s", key, value);
+//        if (mListGuideMapSubmissions != null && !mListGuideMapSubmissions.isEmpty()) {
+//            for (Map.Entry<Integer, HomeVisitObject> entry : mListGuideMapSubmissions.entrySet()) {
+//                int key = entry.getKey();
+//                HomeVisitObject value = entry.getValue();
+//                Timber.i("Response:: Key: %s, Value: %s", key, value);
+//            }
+//        } else {
+//            Timber.i("Response: Failure::" + "Empty Map mListGuideMapSubmissions");
+//        }
 
-            }
-        }else{
-            Timber.i("Response: Failure::" + "Empty Map mListGuideMapSubmissions");
+        HomeVisitResponse homeVisitResponseold;
+
+        String homeVisitResponseStr = SharedPrefManager.getInstance().getHomeVisitList();
+        if (null != homeVisitResponseStr) {
+            homeVisitResponseold = (new Gson()).fromJson(homeVisitResponseStr, HomeVisitResponse.class);
+            mListGuideMapSubmissions.addAll(homeVisitResponseold.getmHomeVisitList());
         }
+
+
+        HomeVisitResponse hvr = new HomeVisitResponse();
+        hvr.setmHomeVisitList(mListGuideMapSubmissions);
+        String hvrStr = (new Gson()).toJson(hvr);
+        SharedPrefManager.getInstance().setHomeVisitList(hvrStr);
+
+
         Intent i = new Intent(QuestionsActivity.this, HomeVisitActivity.class);
-        i.putExtra("listGuideMapSubmissions", mListGuideMapSubmissions);
+        i.putParcelableArrayListExtra("listGuideMapSubmissions", mListGuideMapSubmissions);
         startActivity(i);
         finish();
 
@@ -723,6 +1083,40 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
     protected void onResume() {
         super.onResume();
         setToolbarTitle("");
+    }
+
+    public String resolveQuestion(String hashId) {
+
+        switch (hashId) {
+            case "#POSH-3#":
+                if (mQValidation.get(hashId).equalsIgnoreCase("yes")) {
+                    return "पूरक पोषाहार वितरण पंजी 3";
+                } else {
+                    return "पूरक पोषाहार वितरण सम्बंधित अन्य पंजी";
+                }
+            case "#SPSP-4#":
+                if (mQValidation.get(hashId).equalsIgnoreCase("yes")) {
+                    return "स्कूल पूर्व शिक्षा पंजी- 4";
+                } else {
+                    return "स्कूल पूर्व शिक्षा सम्बंधी अन्य पंजी";
+                }
+            case "#GPP-5#":
+                if (mQValidation.get(hashId).equalsIgnoreCase("yes")) {
+                    return "गर्भावस्था एवं प्रसव पंजी- 5";
+                } else {
+                    return "गर्भावस्था एवं प्रसव सम्बंधी अन्य पंजी";
+                }
+            case "#TVHSN#":
+                if (mQValidation.get(hashId).equalsIgnoreCase("yes")) {
+                    return "टीकाकरण एवं वी.एच.एस.एन.डी. पंजी- 6";
+                } else {
+                    return "टीकाकरण एवं वी.एच.एस.एन.डी. सम्बंधी अन्य पंजी";
+                }
+
+            default:
+                return "";
+
+        }
     }
 
 }

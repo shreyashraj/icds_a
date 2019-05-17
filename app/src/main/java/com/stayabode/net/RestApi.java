@@ -178,6 +178,10 @@ public interface RestApi {
     @POST("login/")
     Call<AdminLoginResponse> loginAdmin(@Body AdminLoginPostResponse requestBody);
 
+    @POST("logout/")
+    Call<AdminLoginResponse> logoutAdmin(@Body AdminLoginPostResponse requestBody);
+
+
     @POST("getQuestionnaire/")
     Call<QuestionsResponse> fetchQuestions(@Body GetQuestionsPostRepsonse requestBody);
 

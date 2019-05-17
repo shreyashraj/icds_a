@@ -120,8 +120,6 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
 
 
 
-        mHouseRules = Constants.ARRAY_HOUSE_RULES;
-
         getLayoutInflater().inflate(layoutResID, mContentHolder, true);
         super.setContentView(mLayout);
 

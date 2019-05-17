@@ -41,34 +41,10 @@
             android:authorities="com.facebook.com.stayabode.app.FacebookContentProvider"
             android:exported="true" />
 
-        <activity
-            android:name="com.stayabode.features.generalfeedback.activities.GeneralFeedbackActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
 
         <activity
             android:name=".features.login.activities.DashboardActivity"
             android:screenOrientation="portrait"/>
-
-
-        <activity
-            android:name="com.stayabode.features.rentals.activities.RentalDetailsActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.rentals.activities.RentalDuesActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.notifications.activities.NotificationsActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
 
 
         <activity
@@ -105,10 +81,6 @@
 
 
 
-        <activity
-            android:name="com.stayabode.dashboard.activities.FullScreenBroadcastActivity"
-            android:screenOrientation="portrait">
-        </activity>
 
         <activity
             android:name="com.stayabode.features.login.activities.LoginAfterCheckoutActivity"
@@ -116,40 +88,7 @@
 
         </activity>
 
-        <activity
-            android:name="com.stayabode.features.visitors.activities.NewVisitorActivity"
-            android:screenOrientation="portrait">
 
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.issues.activities.NewIssueActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity
-            android:name="com.stayabode.features.neighbours.activities.NeighboursActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.stayabode.features.issues.activities.ReportedIssuesActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.stayabode.features.visitors.activities.RegisteredVisitorsActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.stayabode.features.issuefeedback.activities.IssueFeedbackActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.houseprinciple.activities.HousePrinciplesActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
 
         <activity
             android:name="com.stayabode.features.login.activities.LoginActivity"
@@ -157,61 +96,7 @@
 
         </activity>
 
-        <activity
-            android:name="com.stayabode.features.issues.activities.FullScreenIssueImagesActivity"
-            android:screenOrientation="portrait">
 
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.profile.ProfileActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.events.activities.EventsActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.events.activities.EventDetailActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.events.activities.EventPreferencesActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.contract.activities.ContractExtensionActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.contract.activities.ContractExtensionStatusActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.events.activities.AttendeesActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.rentals.activities.RequestRentalReceiptsActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.issuefeedback.activities.ReopenIssueActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.stayabode.features.rentals.activities.PaymentHistoryActivity"
-            android:screenOrientation="portrait">
-        </activity>
 
         <activity
             android:name="com.stayabode.features.login.activities.QuestionsActivity"
@@ -251,10 +136,6 @@
 
         <service
             android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
-            android:enabled="true" />
-
-        <service
-            android:name="com.stayabode.features.issues.activities.S3UploadService"
             android:enabled="true" />
 
         <meta-data

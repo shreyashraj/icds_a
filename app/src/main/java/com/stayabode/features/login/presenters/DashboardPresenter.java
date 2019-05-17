@@ -1,10 +1,12 @@
 package com.stayabode.features.login.presenters;
 
+import com.squareup.okhttp.MultipartBuilder;
+import com.squareup.okhttp.RequestBody;
 import com.stayabode.features.login.views.DashboardView;
 import com.stayabode.net.RestAdapterFactory;
 import com.stayabode.net.response.BaseResponse;
-import com.stayabode.net.response.getmodels.QuestionsResponse;
-import com.stayabode.net.response.postmodels.GetQuestionsPostRepsonse;
+import com.stayabode.net.response.getmodels.AdminLoginResponse;
+import com.stayabode.net.response.postmodels.AdminLoginPostResponse;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -26,20 +28,20 @@ public class DashboardPresenter {
     }
 
 
-    public void getQuestions(String token) {
+    public void logout(String token) {
 
-        GetQuestionsPostRepsonse a = new GetQuestionsPostRepsonse();
+
+        AdminLoginPostResponse a = new AdminLoginPostResponse();
 
         a.setToken(token);
 
 
+        final Call<AdminLoginResponse> fetchQuestionsCall =
+                RestAdapterFactory.newInstance(RestAdapterFactory.RequestType.LOCAL).logoutAdmin(a);
 
-        final Call<QuestionsResponse> fetchQuestionsCall =
-                RestAdapterFactory.newInstance(RestAdapterFactory.RequestType.LOCAL).fetchQuestions(a);
-
-        Callback<QuestionsResponse> callback = new Callback<QuestionsResponse>() {
+        Callback<AdminLoginResponse> callback = new Callback<AdminLoginResponse>() {
             @Override
-            public void onResponse(final Response<QuestionsResponse> response, Retrofit retrofit) {
+            public void onResponse(final Response<AdminLoginResponse> response, Retrofit retrofit) {
 
                 BaseResponse baseResponse = response.body();
 
@@ -49,8 +51,7 @@ public class DashboardPresenter {
                     if (StringUtils.equals(baseResponse.status, Status.STATUS_SUCCESS)) {
                         Timber.v("response" + response.body());
 
-                        QuestionsResponse questionsresponse = response.body();
-                        mdashboardView.onLoginSuccessful(questionsresponse);
+                        mdashboardView.onLogoutSuccessful();
                     } else {
 
                         Timber.i("Response: Failure:: error code: %s, msg: %s", response.code(), response.message());

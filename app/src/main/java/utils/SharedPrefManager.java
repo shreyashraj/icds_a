@@ -43,6 +43,9 @@ public class SharedPrefManager {
     private static final String PREF_CONTRACT_EXTENSION_STATUS = "contract_extension_status";
     private static final String PREF_CONTRACT_EXTENSION_REQUESTED_DATE = "contract_extension_requested_date";
     private static final String PREF_QUESTIONS_RESPONSE = "question_response";
+    private static final String PREF_LOGIN_RESPONSE = "login_response";
+
+    private static final String PREF_HOME_VISIT_RESPONSE= "home_visit__response";
 
 
     public static volatile SharedPrefManager sInstance;
@@ -328,6 +331,23 @@ public class SharedPrefManager {
 
     public String getQuestionsResponse() {
         return sSharedPreferences.getString(PREF_QUESTIONS_RESPONSE, null);
+    }
+
+
+    public void setLoginResponse(String questionsResponse) {
+        sSharedPreferences.edit().putString(PREF_LOGIN_RESPONSE, questionsResponse).commit();
+    }
+
+    public String getLoginResponse() {
+        return sSharedPreferences.getString(PREF_LOGIN_RESPONSE, null);
+    }
+
+    public void setHomeVisitList(String resp) {
+        sSharedPreferences.edit().putString(PREF_HOME_VISIT_RESPONSE, resp).commit();
+    }
+
+    public String getHomeVisitList() {
+        return sSharedPreferences.getString(PREF_HOME_VISIT_RESPONSE, null);
     }
 
 }

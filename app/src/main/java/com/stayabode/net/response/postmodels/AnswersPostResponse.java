@@ -13,6 +13,8 @@ import java.util.HashSet;
 public class AnswersPostResponse extends BaseResponse {
     @SerializedName("q_id")
     private Integer questionId;
+    @SerializedName("q_name")
+    private String questionName;
     @SerializedName("answer")
     private String answer;
     @SerializedName("is_mandatory")
@@ -21,14 +23,20 @@ public class AnswersPostResponse extends BaseResponse {
     private Integer nextQuestionId;
     @SerializedName("checkbox_answers")
     private HashSet<String> checkboxAnswers;
-
     @SerializedName("multipleInputAnswers")
     private ArrayList<String> multipleInputAnswers;
-
     @SerializedName("sub_question_resp")
     private SubAnswersPostBaseResponse subAnswersResponse;
     @SerializedName("validation")
     private String validation;
+
+    public String getQuestionName() {
+        return questionName;
+    }
+
+    public void setQuestionName(String questionName) {
+        this.questionName = questionName;
+    }
 
     public String getValidation() {
         return validation;

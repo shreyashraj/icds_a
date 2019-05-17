@@ -74,6 +74,13 @@
                 android:visibility="invisible" />
 
             <LinearLayout
+                android:id="@+id/datepicker_answers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="invisible" />
+
+            <LinearLayout
                 android:id="@+id/edittexts_answers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
