@@ -5,6 +5,7 @@
     android:layout_height="?android:attr/actionBarSize"
     android:background="@color/broadcast_bg"
     app:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" >
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+    android:id="@+id/darkToolbar">
 
 </android.support.v7.widget.Toolbar>

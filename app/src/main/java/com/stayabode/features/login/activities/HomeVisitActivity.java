@@ -73,9 +73,9 @@ public class HomeVisitActivity extends BaseActivity {
 
         String homeVisitResponseStr = SharedPrefManager.getInstance().getHomeVisitList();
         HomeVisitResponse homeVisitResponse = (new Gson()).fromJson(homeVisitResponseStr, HomeVisitResponse.class);
-
-        mListGuideMapSubmissions= homeVisitResponse.getmHomeVisitList();
-
+        if(homeVisitResponse != null) {
+            mListGuideMapSubmissions = homeVisitResponse.getmHomeVisitList();
+        }
 
 
         if (null != mListGuideMapSubmissions) {

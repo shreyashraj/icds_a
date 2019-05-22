@@ -249,6 +249,8 @@
     <string name="label_login_option_bm">BM</string>
     <string name="label_login_option_other">OTHER</string>
     <string name="label_enter_awc">आंगनवाड़ी केंद्र कोड का चयन करें</string>
+    <string name="label_enter_awcc">आंगनवाड़ी केंद्र कोड</string>
+
     <string name="label_previous">पीछे जाएं</string>
     <string name="label_answer_subqs">संबंधित प्रश्नों के उत्तर दें</string>
 

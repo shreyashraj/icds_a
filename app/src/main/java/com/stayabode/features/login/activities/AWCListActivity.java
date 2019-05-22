@@ -134,7 +134,7 @@ public class AWCListActivity extends BaseActivity implements AWCListView {
     @Override
     protected void onResume() {
         super.onResume();
-        setToolbarTitle(getResources().getString(R.string.label_login));
+        setToolbarTitle(getResources().getString(R.string.label_enter_awcc));
     }
 
 }

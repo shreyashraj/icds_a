@@ -117,8 +117,8 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         setContentView(R.layout.activity_questions);
 
         setActionBar();
-        disableBackArrow();
-
+        //disableBackArrow();
+        disableActionBar();
         Intent questionResponseIntent = getIntent();
         questionResponse = (QuestionsResponse) questionResponseIntent.getParcelableExtra(IntentKeys.INTENT_QUESTIONSRESP);
 

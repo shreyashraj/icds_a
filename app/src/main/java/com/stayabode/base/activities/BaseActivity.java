@@ -231,6 +231,14 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
 
     }
 
+    protected void disableActionBar() {
+        mProfilePic.setVisibility(View.INVISIBLE);
+        mContractExtensionImage.setVisibility(View.INVISIBLE);
+        getSupportActionBar().hide();
+
+
+    }
+
     protected void setActionBarWithButtonText(String title) {
         mProfilePic.setVisibility(View.INVISIBLE);
         mContractExtensionImage.setVisibility(View.INVISIBLE);

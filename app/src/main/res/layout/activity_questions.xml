@@ -13,22 +13,22 @@
 
         <TextView
             android:id="@+id/text_group"
-            android:background="@drawable/button_pink_outline_bg"
-            android:paddingBottom="@dimen/margin_xsmall"
-            android:paddingLeft="@dimen/margin_small"
-            android:paddingRight="@dimen/margin_small"
-            android:paddingTop="@dimen/margin_xsmall"
             style="@style/BodyTextBold"
-            android:textColor="@color/blush"
-            android:textSize="@dimen/text_size_big"
-            android:layout_centerHorizontal="true"
-            android:text="FULL"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/margin_large"
             android:layout_marginRight="@dimen/margin_large"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:background="@drawable/button_pink_outline_bg"
+            android:gravity="center"
+            android:paddingLeft="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_xsmall"
+            android:paddingRight="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_xsmall"
+            android:text="FULL"
+            android:textColor="@color/blush"
+            android:textSize="@dimen/text_size_big" />
 
         <TextView
             android:id="@+id/text_question"
