@@ -89,6 +89,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
     private RadioGroup mRadioGroupAnswers;
     private Button mBtnPreviousQuestion;
     private Integer nextQuestionId;
+    private String groupId;
     private RadioGroup ll;
     private int mPreviousQuestion;
 
@@ -299,30 +300,31 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         try {
 
             nextQuestionId = mCurrentApr.getNextQuestionId();
+            groupId = mCurrentApr.getGroupID();
 
-//            if (nextQuestionId == 3) {
-//                nextQuestionId = 112;
-//            } else if (nextQuestionId == 113) {
-//                nextQuestionId = 116;
-//            } else if (nextQuestionId == 117) {
-//                nextQuestionId = 118;
-//            } else if (nextQuestionId == 119) {
-//                nextQuestionId = 121;
-//            } else if (nextQuestionId == 122) {
-//                nextQuestionId = 133;
-//            } else if (nextQuestionId == 134) {
-//                nextQuestionId = 145;
-//            } else if (nextQuestionId == 146) {
-//                nextQuestionId = 153;
-//            } else if (nextQuestionId == 154) {
-//                nextQuestionId = 162;
-//            } else if (nextQuestionId == 163) {
-//                nextQuestionId = 163;
-//            } else if (nextQuestionId == 164) {
-//                nextQuestionId = 164;
-//            } else if (nextQuestionId == 165) {
-//                nextQuestionId = 169;
-//            }
+            if (nextQuestionId == 3) {
+                nextQuestionId = 112;
+            } else if (nextQuestionId == 113) {
+                nextQuestionId = 116;
+            } else if (nextQuestionId == 117) {
+                nextQuestionId = 118;
+            } else if (nextQuestionId == 119) {
+                nextQuestionId = 121;
+            } else if (nextQuestionId == 122) {
+                nextQuestionId = 133;
+            } else if (nextQuestionId == 134) {
+                nextQuestionId = 145;
+            } else if (nextQuestionId == 146) {
+                nextQuestionId = 153;
+            } else if (nextQuestionId == 154) {
+                nextQuestionId = 162;
+            } else if (nextQuestionId == 163) {
+                nextQuestionId = 163;
+            } else if (nextQuestionId == 164) {
+                nextQuestionId = 164;
+            } else if (nextQuestionId == 165) {
+                nextQuestionId = 169;
+            }
 
 //            put(116, "अगले महीने सम्भावित प्रसव");
 //            put(118, "पिछले माह मे मातृ जटिलता ");
@@ -794,7 +796,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
                     nextQuestionId = Integer.parseInt(options.get(0).getNq_id());
                     try {
-                        if (Integer.parseInt(currentAnswer) < finalValidationvalue) {
+                        if (Integer.parseInt(currentAnswer) <= finalValidationvalue) {
                             shoudSaveAnswer = true;
                             mBtnNextQuestion.setEnabled(true);
                         } else {
@@ -998,6 +1000,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
                 hvo.setQname(mCurrentApr.getQuestionName());
                 hvo.setUuid("");
                 hvo.setBenificiaryname(mCurrentApr.getMultipleInputAnswers().get(index));
+                hvo.setGid(mCurrentApr.getGroupID());
 
 
                 mListGuideMapSubmissions.add(hvo);

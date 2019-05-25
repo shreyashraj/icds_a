@@ -3,11 +3,14 @@ package com.stayabode.features.login.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.stayabode.R;
 import com.stayabode.net.response.postmodels.ListGuideResponse;
@@ -48,6 +51,14 @@ public class HomeVisitAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         issuesViewHolder.mSelectionText.setText(mHomeVisitList.get(position).getSelection());
         issuesViewHolder.mDescriptionText.setText(mHomeVisitList.get(position).getTitle());
+        issuesViewHolder.cardViewListHolder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Test Click  *** " + issuesViewHolder.getAdapterPosition(),
+                        Toast.LENGTH_SHORT).show();
+                Log.i("TAG","GroupID is " +  mHomeVisitList.get(position).getGroupId());
+            }
+        });
 
     }
 
@@ -66,6 +77,8 @@ public class HomeVisitAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         @BindView(R.id.text_description)
         TextView mDescriptionText;
 
+        @BindView(R.id.cardViewListHolder)
+        RelativeLayout cardViewListHolder;
 
 
         public IssuesViewHolder(View itemView) {
@@ -74,6 +87,7 @@ public class HomeVisitAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             mSelectionText = (TextView) itemView.findViewById(R.id.text_selection);
             mDescriptionText = (TextView) itemView.findViewById(R.id.text_description);
+            cardViewListHolder = itemView.findViewById(R.id.cardViewListHolder);
 
         }
     }

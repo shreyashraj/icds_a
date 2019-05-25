@@ -15,12 +15,14 @@ public class HomeVisitObject implements Parcelable {
     private String benificiaryname;
     private String qid;
     private String qname;
+    private String gid;
 
     public HomeVisitObject(Parcel in) {
         uuid = in.readString();
         benificiaryname = in.readString();
         qid = in.readString();
         qname = in.readString();
+        gid = in.readString();
     }
 
     public static final Creator<HomeVisitObject> CREATOR = new Creator<HomeVisitObject>() {
@@ -75,12 +77,21 @@ public class HomeVisitObject implements Parcelable {
         return 0;
     }
 
+    public String getGid() {
+        return gid;
+    }
+
+    public void setGid(String gid) {
+        this.gid = gid;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(uuid);
         dest.writeString(benificiaryname);
         dest.writeString(qid);
         dest.writeString(qname);
+        dest.writeString(gid);
     }
 }
 

@@ -1,5 +1,6 @@
 package com.stayabode.features.login.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -90,6 +91,7 @@ public class SubQuestionsActivity extends BaseActivity {
 
         setActionBar();
         disableBackArrow();
+        disableActionBar();
 
         mGroupName = (TextView) findViewById(R.id.text_group);
         mQuestion = (TextView) findViewById(R.id.text_question);
@@ -479,6 +481,7 @@ public class SubQuestionsActivity extends BaseActivity {
 
     }
 
+    @SuppressLint("NewApi")
     public void addRadioButtons(final SubQuestionObject qObject,
                                 final Integer currentQuestionId, String answer) {
 

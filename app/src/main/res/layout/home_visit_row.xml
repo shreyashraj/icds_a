@@ -4,7 +4,8 @@
     android:background="@drawable/button_pink_outline_bg"
     android:layout_margin="@dimen/margin_medium"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_small">
+    android:layout_marginTop="@dimen/margin_small"
+    android:id="@+id/cardViewListHolder">
 
     <ImageView
         android:layout_marginRight="@dimen/margin_xlarge"

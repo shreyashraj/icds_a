@@ -14,6 +14,8 @@ public class ListGuideResponse extends BaseResponse {
     private String title;
     @SerializedName("selection")
     private String selection;
+    @SerializedName("groupID")
+    private String groupId;
 
 
     public String getSelection() {
@@ -38,6 +40,14 @@ public class ListGuideResponse extends BaseResponse {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }
 

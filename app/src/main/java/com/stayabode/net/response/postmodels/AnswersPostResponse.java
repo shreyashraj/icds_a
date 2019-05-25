@@ -30,6 +30,9 @@ public class AnswersPostResponse extends BaseResponse {
     @SerializedName("validation")
     private String validation;
 
+    @SerializedName("groupID")
+    private String groupID;
+
     public String getQuestionName() {
         return questionName;
     }
@@ -100,6 +103,14 @@ public class AnswersPostResponse extends BaseResponse {
 
     public void setIsMandatory(String isMandatory) {
         this.isMandatory = isMandatory;
+    }
+
+    public String getGroupID() {
+        return groupID;
+    }
+
+    public void setGroupID(String groupID) {
+        this.groupID = groupID;
     }
 }
 

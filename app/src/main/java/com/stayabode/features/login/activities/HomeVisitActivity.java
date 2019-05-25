@@ -50,7 +50,7 @@ public class HomeVisitActivity extends BaseActivity {
     private HomeVisitAdapter homeVisitAdapter;
 
     ArrayList<ListGuideResponse> homeVisitList;
-
+    HashMap<Integer,String> titleForListView;
     HashMap<Integer, String> mListGuideMap;
     private ArrayList<HomeVisitObject> mListGuideMapSubmissions = new ArrayList<>();
     private TextView mEmptyList;
@@ -67,7 +67,7 @@ public class HomeVisitActivity extends BaseActivity {
         mEmptyList = (TextView) findViewById(R.id.tv_emptylist);
 
         mListGuideMap = Constants.listGuideMap;
-
+        titleForListView = Constants.listViewTitle;
         Intent intent = getIntent();
 
 
@@ -94,12 +94,14 @@ public class HomeVisitActivity extends BaseActivity {
 
         for (int i = 0; i < mListGuideMapSubmissions.size(); i++) {
 
-
+            ;
             ListGuideResponse homeVisitObj = new ListGuideResponse();
-
+            homeVisitObj.setTitle(titleForListView.get(Integer.parseInt(mListGuideMapSubmissions.get(i).getQid())));
             homeVisitObj.setQuestionId(mListGuideMapSubmissions.get(i).getQid() + "");
             homeVisitObj.setSelection(mListGuideMapSubmissions.get(i).getBenificiaryname());
-            homeVisitObj.setTitle(mListGuideMapSubmissions.get(i).getQname());
+            homeVisitObj.setGroupId(mListGuideMapSubmissions.get(i).getGid());
+
+            // homeVisitObj.setTitle(mListGuideMapSubmissions.get(i).getQname());
 
             homeVisitList.add(homeVisitObj);
         }
