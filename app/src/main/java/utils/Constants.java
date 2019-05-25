@@ -35,6 +35,18 @@ public class Constants {
         put(169, "लागातार तीन माह से नारंगी रंग मे आने के साथ साथ जो बच्चा बीमार भी हो");
     }};
 
+    public static final HashMap<Integer, String> grpIDForQuestion = new HashMap<Integer,String>(){{
+        put(116, "1");
+        put(133, "2");
+        put(153, "3");
+        put(162, "4");
+        put(163, "5");
+        put(164, "6");
+        put(145, "7");
+        put(118, "8");
+        put(121, "8");
+        put(169, "9");
+    }};
 
     public static final String INTERNET_ERROR = "Please recheck your internet connection";
 

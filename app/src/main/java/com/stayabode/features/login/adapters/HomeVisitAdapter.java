@@ -2,6 +2,8 @@ package com.stayabode.features.login.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,12 +15,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.stayabode.R;
+import com.stayabode.features.login.activities.QuestionsActivity;
+import com.stayabode.features.login.activities.SubQuestionsActivity;
 import com.stayabode.net.response.postmodels.ListGuideResponse;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import utils.IntentKeys;
 
 /**
  * Created by VarunBhalla on 15/12/16.
@@ -46,7 +51,7 @@ public class HomeVisitAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         final IssuesViewHolder issuesViewHolder = (IssuesViewHolder) holder;
 
         issuesViewHolder.mSelectionText.setText(mHomeVisitList.get(position).getSelection());
@@ -57,6 +62,13 @@ public class HomeVisitAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 Toast.makeText(mContext, "Test Click  *** " + issuesViewHolder.getAdapterPosition(),
                         Toast.LENGTH_SHORT).show();
                 Log.i("TAG","GroupID is " +  mHomeVisitList.get(position).getGroupId());
+
+                Intent i = new Intent(v.getContext(), QuestionsActivity.class);
+              //  i.putParcelableArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONSRESP, (ArrayList<? extends Parcelable>) subQuestions);
+                //i.putStringArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONS_INPUTS, allanswers);
+                //i.putExtra("mQValidation", mQValidation);
+               // startActivityForResult(i, 3);
+               v.getContext().startActivity(i);
             }
         });
 
