@@ -1,6 +1,7 @@
 package com.stayabode.features.login.adapters;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.stayabode.R;
+import com.stayabode.features.login.activities.QuestionActivityForList;
 import com.stayabode.features.login.activities.QuestionsActivity;
 import com.stayabode.features.login.activities.SubQuestionsActivity;
 import com.stayabode.net.response.postmodels.ListGuideResponse;
@@ -63,14 +65,15 @@ public class HomeVisitAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         Toast.LENGTH_SHORT).show();
                 Log.i("TAG","GroupID is " +  mHomeVisitList.get(position).getGroupId());
 
-                Intent i = new Intent(v.getContext(), QuestionsActivity.class);
-              //  i.putParcelableArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONSRESP, (ArrayList<? extends Parcelable>) subQuestions);
+                Intent i = new Intent(v.getContext(), QuestionActivityForList.class);
+                //i.putParcelableArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONSRESP, (ArrayList<? extends Parcelable>) subQuestions);
                 //i.putStringArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONS_INPUTS, allanswers);
-                //i.putExtra("mQValidation", mQValidation);
-               // startActivityForResult(i, 3);
-               v.getContext().startActivity(i);
+                i.putExtra("mCurrentGroupList", mHomeVisitList.get(position).getGroupId());
+                v.getContext().startActivity(i);
+                //((Activity)mContext).startActivityForResult(i,111);
             }
         });
+
 
     }
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -118,8 +119,16 @@ public class HomeVisitActivity extends BaseActivity {
         mReportedIssuesRecycler.setLayoutManager(linearLayoutManager);
         mReportedIssuesRecycler.setAdapter(homeVisitAdapter);
 
-
     }
+
+/*    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 111){
+            homeVisitAdapter.notifyItemRemoved();
+        }
+
+    }*/
 
     @Override
     protected void onResume() {

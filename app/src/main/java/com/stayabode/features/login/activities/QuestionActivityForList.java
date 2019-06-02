@@ -49,7 +49,6 @@ import java.util.Map;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import timber.log.Timber;
 import utils.Constants;
 import utils.IntentKeys;
 import utils.SharedPrefManager;
@@ -65,16 +64,10 @@ import static utils.Constants.RADIOTVHSN;
 import static utils.Constants.VALIDATION_CHECK;
 import static utils.Constants.VALIDATION_EQ;
 import static utils.Constants.VALIDATION_GOTO;
-import static utils.Constants.VALIDATION_LIST;
 import static utils.Constants.VALIDATION_LT;
 import static utils.Constants.VALIDATION_MAX;
 
-/**
- * Created by VarunBhalla on 16/11/16.
- */
-
-public class QuestionsActivity extends BaseActivity implements QuestionsView {
-
+public class QuestionActivityForList extends BaseActivity implements QuestionsView {
     private QuestionsPresenter mQuestionsPresenter;
 
     private CoordinatorLayout mCoordinatorLayout;
@@ -357,6 +350,32 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
                 showGenericErrorView();
 
             } else {
+                if(mCurrentGroup == 1){
+                    nextQuestionId = nextQuestionId - 170;
+                }if(mCurrentGroup == 2){
+                    nextQuestionId = nextQuestionId - 197;
+                }
+                if(mCurrentGroup == 3){
+                    nextQuestionId = nextQuestionId - 252;
+                }
+                if(mCurrentGroup == 4){
+                    nextQuestionId = nextQuestionId - 273;
+                }
+                if(mCurrentGroup == 5){
+                    nextQuestionId = nextQuestionId - 294;
+                }
+                if(mCurrentGroup == 6){
+                    nextQuestionId = nextQuestionId - 315;
+                }
+                if(mCurrentGroup == 7){
+                    nextQuestionId = nextQuestionId - 330;
+                }
+                if(mCurrentGroup == 8){
+                    nextQuestionId = nextQuestionId - 343;
+                }
+                if(mCurrentGroup == 9){
+                    nextQuestionId = nextQuestionId - 353;
+                }
 
                 mGroupName.setText(questionResponse.getData().get(mCurrentGroup).getData().get(nextQuestionId).getG_name());
 
@@ -489,7 +508,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
 
     private void startSubQuestionActivity(List<SubQuestionObject> subQuestions, ArrayList<String> allanswers) {
-        Intent i = new Intent(QuestionsActivity.this, SubQuestionsActivity.class);
+        Intent i = new Intent(QuestionActivityForList.this, SubQuestionsActivity.class);
         i.putParcelableArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONSRESP, (ArrayList<? extends Parcelable>) subQuestions);
         i.putStringArrayListExtra(IntentKeys.INTENT_SUB_QUESTIONS_INPUTS, allanswers);
         i.putExtra("mQValidation", mQValidation);
@@ -1088,7 +1107,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
         SharedPrefManager.getInstance().setHomeVisitList(hvrStr);
 
 
-        Intent i = new Intent(QuestionsActivity.this, HomeVisitActivity.class);
+        Intent i = new Intent(QuestionActivityForList.this, HomeVisitActivity.class);
         i.putParcelableArrayListExtra("listGuideMapSubmissions", mListGuideMapSubmissions);
         startActivity(i);
         finish();
@@ -1134,5 +1153,4 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
         }
     }
-
 }

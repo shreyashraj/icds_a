@@ -3,18 +3,17 @@
     android:layout_width="match_parent"
     android:background="@drawable/button_pink_outline_bg"
     android:layout_margin="@dimen/margin_medium"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:layout_marginTop="@dimen/margin_small"
     android:id="@+id/cardViewListHolder">
 
     <ImageView
-        android:layout_marginRight="@dimen/margin_xlarge"
-        android:layout_marginLeft="@dimen/margin_xlarge"
-        android:layout_marginTop="@dimen/margin_20"
-        android:src="@mipmap/ic_circle_solid_pink"
         android:id="@+id/img_status"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginTop="@dimen/margin_20"
+        android:src="@mipmap/ic_circle_solid_pink" />
 
     <TextView
         android:layout_toRightOf="@+id/img_status"

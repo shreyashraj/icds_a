@@ -104,6 +104,13 @@
         </activity>
 
         <activity
+            android:name="com.stayabode.features.login.activities.QuestionActivityForList"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
+        <activity
             android:name="com.stayabode.features.login.activities.SubQuestionsActivity"
             android:screenOrientation="portrait">
         </activity>
