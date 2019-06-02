@@ -296,6 +296,11 @@ public class QuestionActivityForList extends BaseActivity implements QuestionsVi
                     0,
                     null);
             mRadioGroupAnswers.setVisibility(View.VISIBLE);
+        }else if (questionResponse.getData().get(mCurrentGroup).getData().get(0).getQ_type().equalsIgnoreCase("Input_No")) {
+            showInputView();
+            addEditText(questionResponse.getData().get(mCurrentGroup).getData().get(0),
+                   0,
+                    null, "Input_No");
         }
 
     }
@@ -540,7 +545,7 @@ public class QuestionActivityForList extends BaseActivity implements QuestionsVi
                     questionSequence.get(mCurrentQuestionIndex).getQuestionId(),
                     questionSequence.get(mCurrentQuestionIndex).getAnswer());
             mRadioGroupAnswers.setVisibility(View.VISIBLE);
-        } else if (questionType.equalsIgnoreCase("Input") || questionType.equalsIgnoreCase("Input_validation")) {
+        } else if (questionType.equalsIgnoreCase("Input") || questionType.equalsIgnoreCase("Input_validation")  || questionType.equalsIgnoreCase("Input_No")) {
             showInputView();
             addEditText(questionResponse.getData().get(mCurrentGroup).getData().get(questionSequence.get(mCurrentQuestionIndex).getQuestionId()),
                     questionSequence.get(mCurrentQuestionIndex).getQuestionId(),

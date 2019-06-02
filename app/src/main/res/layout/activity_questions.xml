@@ -86,7 +86,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="invisible" />
-
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_multiple_answers"
                 android:layout_width="match_parent"

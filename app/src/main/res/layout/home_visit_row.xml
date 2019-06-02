@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/button_pink_outline_bg"
     android:layout_margin="@dimen/margin_medium"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margin_small"
     android:id="@+id/cardViewListHolder">
 
@@ -16,26 +16,28 @@
         android:src="@mipmap/ic_circle_solid_pink" />
 
     <TextView
-        android:layout_toRightOf="@+id/img_status"
         android:id="@+id/text_description"
         style="@style/BodyTextRegular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="@dimen/margin_medium"
-        android:textSize="@dimen/text_size_15" />
+        android:layout_toRightOf="@+id/img_status"
+        android:textSize="@dimen/text_size_20" />
 
 
     <TextView
-        android:layout_below="@id/text_description"
-        android:layout_toRightOf="@+id/img_status"
         android:id="@+id/text_selection"
         style="@style/BodyTextBold"
-        android:layout_marginBottom="@dimen/margin_medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_below="@id/text_description"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_toRightOf="@+id/img_status"
         android:textAllCaps="true"
-        android:textSize="@dimen/text_size_xsmall" />
+        android:textSize="@dimen/text_size_15" />
 
 
 </RelativeLayout>
