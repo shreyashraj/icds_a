@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -309,12 +310,22 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
     @SuppressLint("SetTextI18n")
     private void showNextQuestion(int mCurrentGroup) {
-
+        String answer1 = "";
+        String answer2= "";
         try {
 
             nextQuestionId = mCurrentApr.getNextQuestionId();
             groupId = mCurrentApr.getGroupID();
-
+            try {
+                if (nextQuestionId == 2) {
+                    answer1 = mCurrentApr.getAnswer();
+                }
+                if (nextQuestionId == 3) {
+                    answer2 = mCurrentApr.getAnswer();
+                }
+            }catch (Exception e){
+                Log.i("QuestionActivity", e.getMessage());
+            }
           /*  if (nextQuestionId == 3) {
                 nextQuestionId = 112;
             } else if (nextQuestionId == 113) {
@@ -352,7 +363,7 @@ public class QuestionsActivity extends BaseActivity implements QuestionsView {
 
             mCurrentApr = new AnswersPostResponse();
 
-            if (nextQuestionId == -1) {
+            if (nextQuestionId == -1 || ( answer1.equals("नहीं") && answer2.equals("नहीं")) ) {
 
                 showGenericErrorView();
 
